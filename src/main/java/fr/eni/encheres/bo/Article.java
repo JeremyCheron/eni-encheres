@@ -12,14 +12,14 @@ public class Article {
 	private double startPrice;
 	private double finalPrice;
 	private int status;
-	private User user;
+	private int userId;
 	
 	public Article() {
 		
 	}
 
 	public Article(int articleId, String name, String description, LocalDate startDate, LocalDate endDate,
-			double startPrice, double finalPrice, int status, User user) {
+			double startPrice, double finalPrice, int status, int userId) {
 		this.articleId = articleId;
 		this.name = name;
 		this.description = description;
@@ -28,7 +28,7 @@ public class Article {
 		this.startPrice = startPrice;
 		this.finalPrice = finalPrice;
 		this.status = status;
-		this.user = user;
+		this.userId = userId;
 	}
 
 	public int getArticleId() {
@@ -95,13 +95,15 @@ public class Article {
 		this.status = status;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
+
+	
 	
 	
 	

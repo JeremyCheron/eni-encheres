@@ -20,7 +20,7 @@ public class DAOFactory {
 	}
 	
 	 public DAO<Article> getArticleDAO() {
-		return new ArticleDAO();
+		return new ArticleDAO(cnx);
 	}
 //	 public DAO<User> getUserDAO() {
 //		 return new UserDAO();

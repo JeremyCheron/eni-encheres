@@ -3,9 +3,11 @@ package fr.eni.encheres.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.dal.helpers.DAOHelper;
 
 public class ArticleDAO implements DAO<Article>{
 	
@@ -28,10 +30,11 @@ public class ArticleDAO implements DAO<Article>{
 		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_ID)){
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				article = new Article();
+			article = DAOHelper.mapSingleResult(rs);
 				
-			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return article;
 	}
