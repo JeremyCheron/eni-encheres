@@ -1,5 +1,5 @@
 package fr.eni.encheres.bo;
 
-public class auction {
+public class Auction {
 
 }
