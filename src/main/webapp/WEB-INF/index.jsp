@@ -14,7 +14,7 @@
 
 <body class="bg-green-300">
 
-    <div class="flex items-center justify-center h-screen">
+    <div class="flex items-center justify-center h-screen mt-10 mb-10">
     
         <div class="bg-green-700 text-white p-8 rounded shadow-md w-96">
         
