@@ -4,14 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.dal.helpers.ArticleRowMapper;
 import fr.eni.encheres.dal.helpers.DAOHelper;
 
 public class ArticleDAO implements DAO<Article>{
 	
 	private Connection cnx;
+	private final DAOHelper<Article> daoHelper;
 	
 	private static final String SELECT_BY_ID = "SELECT * FROM dbo.ARTICLES WHERE no_article=?";
 	private static final String SELECT_ALL = "SELECT * FROM dbo.ARTICLES";
@@ -21,6 +24,7 @@ public class ArticleDAO implements DAO<Article>{
 	
 	public ArticleDAO(Connection _cnx) {
 		this.cnx = _cnx;
+		this.daoHelper = new DAOHelper<>(new ArticleRowMapper());
 	}
 	
 
@@ -30,7 +34,7 @@ public class ArticleDAO implements DAO<Article>{
 		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_ID)){
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			article = DAOHelper.mapSingleResult(rs);
+			article = daoHelper.mapSingleResult(rs);
 				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -41,8 +45,15 @@ public class ArticleDAO implements DAO<Article>{
 
 	@Override
 	public List<Article> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Article> articles = new ArrayList<>();
+		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_ALL)) {
+			ResultSet rs = stmt.executeQuery();
+			articles = daoHelper.mapResults(rs);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return articles;
 	}
 
 	@Override
