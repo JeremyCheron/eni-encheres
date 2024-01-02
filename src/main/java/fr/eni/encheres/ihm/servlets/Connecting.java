@@ -17,20 +17,13 @@ public class Connecting extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		boolean accountExisting = true;
-		RequestDispatcher accessProfile = this.getServletContext().getNamedDispatcher("index");
-		if (accountExisting) {
-			accessProfile = this.getServletContext().getNamedDispatcher("");
-		}else {
-			accessProfile = this.getServletContext().getNamedDispatcher("");
-		}
-		accessProfile.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher accessProfile = this.getServletContext().getNamedDispatcher("auctionsList");
+		accessProfile.forward(request, response);
 	}
-
 }

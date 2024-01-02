@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">  
-<display-name>Eni-Encheres</display-name>
-<servlet>
- 	<servlet-name>index</servlet-name>
- 	<jsp-file>/WEB-INF/index.jsp</jsp-file>
- </servlet>
- <servlet-mapping>
- 	<servlet-name>index</servlet-name>
- 	<url-pattern></url-pattern>
- </servlet-mapping>
- <servlet>
- 	<servlet-name>create</servlet-name>
- 	<jsp-file>/WEB-INF/createProfile.jsp</jsp-file>
- </servlet>
- <servlet-mapping>
- 	<servlet-name>create</servlet-name>
- 	<url-pattern>/create</url-pattern>
- </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Eni-Encheres</display-name>
+  <servlet>
+    <servlet-name>index</servlet-name>
+    <jsp-file>/WEB-INF/index.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>create</servlet-name>
+    <jsp-file>/WEB-INF/createProfile.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>create</servlet-name>
+    <url-pattern>/create</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>auctionsList</servlet-name>
+    <jsp-file>/WEB-INF/auctionsList.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auctionsList</servlet-name>
+    <url-pattern>/auctions</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>bloup</display-name>
+    <servlet-name>bloup</servlet-name>
+    <servlet-class>fr.eni.encheres.ihm.servlets.bloup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bloup</servlet-name>
+    <url-pattern>/bloup</url-pattern>
+  </servlet-mapping>
 </web-app>
