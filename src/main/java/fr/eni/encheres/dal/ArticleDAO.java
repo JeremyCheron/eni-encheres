@@ -80,15 +80,23 @@ public class ArticleDAO implements DAO<Article>{
 	}
 
 	@Override
-	public void update(Article Object) {
-		// TODO Auto-generated method stub
+	public void update(Article article) throws Exception {
+		
+		try (PreparedStatement stmt = daoHelper.createUpdateStatement(article, cnx))
+		{ 
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Update Fail");
+		}
 		
 	}
 
 	@Override
 	public void delete(Article article) throws Exception {
 		
-		try(PreparedStatement stmt = daoHelper.deleteStatement(article, cnx)){
+		try(PreparedStatement stmt = daoHelper.deleteStatement(article, cnx))
+		{
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
