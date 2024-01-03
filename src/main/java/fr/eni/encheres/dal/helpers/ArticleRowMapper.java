@@ -67,6 +67,18 @@ public class ArticleRowMapper implements RowMapper<Article> {
 		
 		return stmt;
 	}
+
+	@Override
+	public PreparedStatement deleteStatement(Article article, Connection cnx) throws SQLException {
+		
+		String DELETE = "DELETE FROM dbo.ARTICLES WHERE article_id=?";
+		
+		PreparedStatement stmt = cnx.prepareStatement(DELETE);
+		
+		stmt.setInt(1, article.getArticleId());
+
+		return stmt;
+	}
 	
 	
 	

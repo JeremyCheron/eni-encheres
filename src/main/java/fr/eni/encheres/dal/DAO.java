@@ -8,5 +8,5 @@ public interface DAO<T> {
 	List<T> selectAll();
 	void insert(T Object) throws Exception;
 	void update(T Object);
-	void delete(T Object);
+	void delete(T Object) throws Exception;
 }
