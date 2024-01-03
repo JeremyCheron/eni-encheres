@@ -18,7 +18,7 @@
 
 			<div>
 				<label for="nom">Nom*:</label> 
-				<input type text="text" id="nom"
+				<input type="text" id="nom"
 					name="nom" autofocus required placeholder="Saisissez votre Nom"
 					pattern="[A-Za-z]{3,}">
 					
@@ -82,7 +82,7 @@
 				<button type="submit">"Enregistrer "</button>
 			</div>
 			<div>
-				<button type="annuler modification">"Annuler modification "</button>
+				<button type="button">"Annuler modification "</button>
 			</div>
 		</form>
 	</fieldset>

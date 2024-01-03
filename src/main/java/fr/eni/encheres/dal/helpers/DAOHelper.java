@@ -1,5 +1,7 @@
 package fr.eni.encheres.dal.helpers;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,5 +30,11 @@ public class DAOHelper<T> {
 		return results;
 	}
 	
+	public PreparedStatement createInsertStatement(T Object, Connection cnx) throws SQLException {
+		return rm.createInsertStatement(Object, cnx);
+	}
 	
+	public PreparedStatement createUpdateStatement(T Object, Connection cnx) throws SQLException {
+		return rm.createInsertStatement(Object, cnx);
+	}
 }

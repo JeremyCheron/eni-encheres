@@ -16,11 +16,9 @@ public class ArticleDAO implements DAO<Article>{
 	private Connection cnx;
 	private final DAOHelper<Article> daoHelper;
 	
-	private static final String SELECT_BY_ID = "SELECT * FROM dbo.ARTICLES WHERE no_article=?";
+	private static final String SELECT_BY_ID = "SELECT * FROM dbo.ARTICLES WHERE article_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM dbo.ARTICLES";
-	private static final String DELETE = "DELETE FROM dbo.ARTICLES WHERE no_article=?";
-	private static final String INSERT = "INSERT INTO dbo.ARTICLES(article_name, description, start_auction_date, end_auction_date, initial_price, final_price, user_id, category_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String UPDATE = "UPDATE dbo.ARTICLES SET article_name=?, description=?, start_auction_date=?, end_auction_date=?, initial_price=?, final_price=?, user_id=?, category_id=? WHERE article_id=?";
+	private static final String DELETE = "DELETE FROM dbo.ARTICLES WHERE article_id=?";
 	
 	public ArticleDAO(Connection _cnx) {
 		this.cnx = _cnx;
@@ -57,8 +55,28 @@ public class ArticleDAO implements DAO<Article>{
 	}
 
 	@Override
-	public void insert(Article Object) {
-		// TODO Auto-generated method stub
+	public void insert(Article article) throws Exception {
+
+		try (PreparedStatement stmt = daoHelper.createInsertStatement(article, cnx)) 
+		{
+			int affectedRows = stmt.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new Exception("Insertion Failed, no rows affected.");
+			}
+			
+			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+				if(generatedKeys.next()) {
+					article.setArticleId(generatedKeys.getInt(1));
+				} else {
+					throw new Exception("Insertion Failed, no ID obtained.");
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new Exception("Error during insertion.");
+		}
 		
 	}
 
