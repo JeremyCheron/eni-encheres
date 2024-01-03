@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import fr.eni.encheres.bo.Article;
-import fr.eni.encheres.bo.Auction;
-import fr.eni.encheres.bo.User;
+import fr.eni.encheres.bo.Bid;
 
 public class DAOFactory {
 	
@@ -25,7 +24,7 @@ public class DAOFactory {
 //	 public DAO<User> getUserDAO() {
 //		 return new UserDAO();
 //	 }
-//	 public DAO<Auction> getAuctionsDAO() {
-//		 return new AuctionsDAO();
-//	 }
+	 public DAO<Bid> getAuctionsDAO() {
+		 return new BidDAO(cnx);
+	 }
 }
