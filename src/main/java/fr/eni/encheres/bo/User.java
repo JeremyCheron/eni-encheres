@@ -18,6 +18,25 @@ public class User {
 	public User() {
 		
 	}
+	
+	
+
+	public User(String username, String firstname, String lastname, String mail, String phone, String street,
+			int postCode, String city, String password, int points) {
+		super();
+		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.mail = mail;
+		this.phone = phone;
+		this.street = street;
+		this.postCode = postCode;
+		this.city = city;
+		this.password = password;
+		this.points = points;
+	}
+
+
 
 	public User(int userId, String username, String firstname, String lastname, String mail, String phone,
 			String street, int postCode, String city, String password, int points, boolean isAdmin) {

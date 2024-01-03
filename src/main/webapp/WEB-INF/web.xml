@@ -35,4 +35,14 @@
     <servlet-name>ds</servlet-name>
     <url-pattern>/ds</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateUserServlet</display-name>
+    <servlet-name>CreateUserServlet</servlet-name>
+    <servlet-class>fr.eni.encheres.ihm.servlets.user.CreateUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateUserServlet</servlet-name>
+    <url-pattern>/CreateUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
