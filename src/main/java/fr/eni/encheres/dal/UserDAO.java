@@ -1,12 +1,10 @@
 package fr.eni.encheres.dal;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.helpers.DAOHelper;
 import fr.eni.encheres.dal.helpers.UserRowMapper;
@@ -70,15 +68,13 @@ public class UserDAO implements DAO<User> {
 					throw new Exception("Insertion Failed, no ID obtained.");
 				}
 			}
-		
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new Exception("User : Error during insertion.");
 		}
-	  
 	}
 	
-
 	@Override
 	public void update(User user) throws Exception {
 		
@@ -89,7 +85,6 @@ public class UserDAO implements DAO<User> {
 			e.printStackTrace();
 			throw new Exception("User : Update Fail");
 		}
-
 	}
 
 	@Override
@@ -103,7 +98,4 @@ public class UserDAO implements DAO<User> {
 			throw new Exception("User : Error during deleting.");
 		}
 	}
-	
-
-
 }
