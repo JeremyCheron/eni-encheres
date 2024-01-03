@@ -5,7 +5,9 @@ import java.sql.SQLException;
 
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Auction;
+import fr.eni.encheres.bo.Category;
 import fr.eni.encheres.bo.User;
+import fr.eni.encheres.bo.Withdrawal;
 
 public class DAOFactory {
 	
@@ -28,4 +30,12 @@ public class DAOFactory {
 //	 public DAO<Auction> getAuctionsDAO() {
 //		 return new AuctionsDAO();
 //	 }
+	 
+	 public DAO<Category> getCategoryDao() {
+		 return new CategoryDAO(cnx);
+	 }
+	 
+	 public DAO<Withdrawal> getWithdrawalDao() {
+		 return new WithdrawalDAO(cnx);
+	 }
 }
