@@ -52,47 +52,47 @@ public class BidDAO implements DAO<Bid> {
 	}
 
 	@Override
-	public void insert(Bid bid) throws Exception {
+	public void insert(Bid bid) throws DALException {
 		try (PreparedStatement stmt = daoHelper.createInsertStatement(bid, cnx))
 		{
 			int affectedRows = stmt.executeUpdate();
 			
 			if(affectedRows == 0) {
-				throw new Exception("Bid Insertion Failed, no rows affected.");
+				throw new DALException("Bid Insertion Failed, no rows affected.");
 			}
 		try (ResultSet generatedKeys = stmt.getGeneratedKeys()){
 			if(generatedKeys.next()) {
 				bid.setBidId(generatedKeys.getInt(1));
 			} else {
-				throw new Exception("Bid Insertion Failed, no ID obtained.");
+				throw new DALException("Bid Insertion Failed, no ID obtained.");
 			}
 		}
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Error during insertion.");
+			throw new DALException("Error during insertion.");
 		}
 	}
 
 	@Override
-	public void update(Bid bid) throws Exception {
+	public void update(Bid bid) throws DALException {
 		try (PreparedStatement stmt = daoHelper.createUpdateStatement(bid, cnx))
 		{ 
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new Exception("Bid Update Fail");
+			throw new DALException("Bid Update Fail");
 		}
 	}
 
 	@Override
-	public void delete(Bid bid) throws Exception {
+	public void delete(Bid bid) throws DALException {
 		try(PreparedStatement stmt = daoHelper.deleteStatement(bid, cnx))
 		{
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Error during deleting.");
+			throw new DALException("Error during deleting.");
 		}
 	}
 
