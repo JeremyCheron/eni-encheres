@@ -25,4 +25,14 @@
     <servlet-name>auctionsList</servlet-name>
     <url-pattern>/auctions</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ds</display-name>
+    <servlet-name>ds</servlet-name>
+    <servlet-class>fr.eni.encheres.ihm.servlets.ds</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ds</servlet-name>
+    <url-pattern>/ds</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -17,6 +17,23 @@ public class Article {
 	public Article() {
 		
 	}
+	
+	
+
+	public Article(String name, String description, LocalDate startDate, LocalDate endDate, int startPrice,
+			int finalPrice, int userId, int categoryId) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.startPrice = startPrice;
+		this.finalPrice = finalPrice;
+		this.userId = userId;
+		this.categoryId = categoryId;
+	}
+
+
 
 	public Article(int articleId, String name, String description, LocalDate startDate, LocalDate endDate,
 			int startPrice, int finalPrice, int userId, int categoryId) {

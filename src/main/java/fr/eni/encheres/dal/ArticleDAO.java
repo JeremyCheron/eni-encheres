@@ -16,8 +16,8 @@ public class ArticleDAO implements DAO<Article>{
 	private Connection cnx;
 	private final DAOHelper<Article> daoHelper;
 	
-	private static final String SELECT_BY_ID = "SELECT * FROM dbo.ARTICLES WHERE article_id=?";
-	private static final String SELECT_ALL = "SELECT * FROM dbo.ARTICLES";
+	private static final String SELECT_BY_ID = "SELECT * FROM ARTICLES WHERE article_id=?";
+	private static final String SELECT_ALL = "SELECT * FROM ARTICLES";
 	
 	public ArticleDAO(Connection _cnx) {
 		this.cnx = _cnx;

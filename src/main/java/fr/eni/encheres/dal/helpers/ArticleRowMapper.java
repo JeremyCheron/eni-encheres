@@ -31,7 +31,7 @@ public class ArticleRowMapper implements RowMapper<Article> {
 	@Override
 	public PreparedStatement createInsertStatement(Article article, Connection cnx) throws SQLException {
 		
-		String INSERT = "INSERT INTO dbo.ARTICLES(article_name, description, start_auction_date, end_auction_date, initial_price, final_price, user_id, category_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		String INSERT = "INSERT INTO ARTICLES(article_name, description, start_auction_date, end_auction_date, initial_price, final_price, user_id, category_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement stmt = cnx.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
 		
@@ -50,7 +50,7 @@ public class ArticleRowMapper implements RowMapper<Article> {
 	@Override
 	public PreparedStatement createUpdateStatement(Article article, Connection cnx) throws SQLException {
 		
-		String UPDATE = "UPDATE dbo.ARTICLES SET article_name=?, description=?, start_auction_date=?, end_auction_date=?, initial_price=?, final_price=?, user_id=?, category_id=? WHERE article_id=?";
+		String UPDATE = "UPDATE ARTICLES SET article_name=?, description=?, start_auction_date=?, end_auction_date=?, initial_price=?, final_price=?, user_id=?, category_id=? WHERE article_id=?";
 		
 		PreparedStatement stmt = cnx.prepareStatement(UPDATE);
 		
@@ -71,7 +71,7 @@ public class ArticleRowMapper implements RowMapper<Article> {
 	@Override
 	public PreparedStatement deleteStatement(Article article, Connection cnx) throws SQLException {
 		
-		String DELETE = "DELETE FROM dbo.ARTICLES WHERE article_id=?";
+		String DELETE = "DELETE FROM ARTICLES WHERE article_id=?";
 		
 		PreparedStatement stmt = cnx.prepareStatement(DELETE);
 		
