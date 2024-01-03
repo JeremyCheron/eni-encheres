@@ -28,13 +28,13 @@ public class ArticleDAO implements DAO<Article>{
 	@Override
 	public Article selectByID(int id) throws DALException {
 		Article article = null;
-		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_ID)){
+		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_ID))
+		{
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			article = daoHelper.mapSingleResult(rs);
 				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return article;
@@ -76,9 +76,8 @@ public class ArticleDAO implements DAO<Article>{
 			e.printStackTrace();
 			throw new DALException("Article : Error during insertion.");
 		}
-		
 	}
-
+		
 	@Override
 	public void update(Article article) throws DALException {
 		

@@ -25,19 +25,19 @@
 		<form action="" method="POST">
 			<div>
 				<label for="rue">Rue*:</label> 
-				<input type text="text" id="rue"
+				<input type="text" id="rue"
 					name="nom" autofocus required pattern="[A-Za-z]{3,}"
 					placeholder="Rue des mouettes">
 			</div>
 			<div>
 				<label for="code postal">Code postal*:</label> 
-				<input type text="text" id="code postal"
+				<input type="text" id="code postal"
 					name="nom" autofocus required pattern="[A-Za-z]{3,}"
 					placeholder="44800">
 			</div>
 			<div>
 				<label for="vile">Ville*:</label> 
-				<input type text="text" id="ville"
+				<input type="text" id="ville"
 					name="nom" autofocus required pattern="[A-Za-z]{3,}"
 					placeholder="Saint Herblain">
 			</div>
@@ -46,10 +46,10 @@
 			
 		
 			<div>
-				<button type="enregistrer">"Enregistrer "</button>
+				<input type="submit" name="save" value="Save">
 			</div>
 			<div>
-				<button type="annuler">"Annuler "</button>
+				<input type="button" value="Cancel">
 			</div>
 </body>
 </html>
