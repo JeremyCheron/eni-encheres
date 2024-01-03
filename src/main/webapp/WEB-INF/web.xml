@@ -1,58 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Eni-Encheres</display-name>
-  <servlet>
-    <servlet-name>index</servlet-name>
-    <jsp-file>/WEB-INF/index.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>index</servlet-name>
-    <url-pattern></url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>create</servlet-name>
-    <jsp-file>/WEB-INF/createProfile.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>create</servlet-name>
-    <url-pattern>/create</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>auctionsList</servlet-name>
-    <jsp-file>/WEB-INF/auctionsList.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>auctionsList</servlet-name>
-    <url-pattern>/auctions</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ds</display-name>
-    <servlet-name>ds</servlet-name>
-    <servlet-class>fr.eni.encheres.ihm.servlets.ds</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ds</servlet-name>
-    <url-pattern>/ds</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>CreateUserServlet</display-name>
-    <servlet-name>CreateUserServlet</servlet-name>
-    <servlet-class>fr.eni.encheres.ihm.servlets.user.CreateUserServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateUserServlet</servlet-name>
-    <url-pattern>/CreateUserServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>test</display-name>
-    <servlet-name>test</servlet-name>
-    <servlet-class>fr.eni.encheres.ihm.servlets.test</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/test</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Eni-Encheres</display-name>
+	<servlet>
+		<servlet-name>index</servlet-name>
+		<jsp-file>/WEB-INF/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern></url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>create</servlet-name>
+		<jsp-file>/WEB-INF/createProfile.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>create</servlet-name>
+		<url-pattern>/create</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>

@@ -30,10 +30,10 @@ CREATE TABLE articles (
 CREATE TABLE bids (
   bid_id INT IDENTITY(1,1) NOT NULL,
   bid_date DATETIME NOT NULL,
+  bid_time DATETIME NOT NULL,
   bid_amount INT NOT NULL,
   article_id INT NOT NULL,
   user_id INT NOT NULL,
-  bid_status INT NOT NULL,
   CONSTRAINT bid_id_pk PRIMARY KEY (bid_id),
 );
 
@@ -97,3 +97,5 @@ ALTER TABLE bids ADD CONSTRAINT bids_user_fk FOREIGN KEY (user_id) REFERENCES us
 ALTER TABLE bids ADD CONSTRAINT bids_article_fk FOREIGN KEY (article_id) REFERENCES articles (article_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 ALTER TABLE withdrawals ADD  CONSTRAINT withdrawals_article_fk FOREIGN KEY (article_id) REFERENCES articles (article_id) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+DROP TABLE bids

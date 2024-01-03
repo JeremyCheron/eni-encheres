@@ -22,7 +22,7 @@
         
             <h1 class="text-2xl font-bold mb-6">Login</h1>
 
-            <form ACTION="${pageContext.request.contextPath}/Login" METHOD="post">
+            <form ACTION="${pageContext.request.contextPath}/auctions" METHOD="post">
                 <label class="block text-gray-200 mb-2">Username:</label>
                 <input type="text" class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" required>
 
