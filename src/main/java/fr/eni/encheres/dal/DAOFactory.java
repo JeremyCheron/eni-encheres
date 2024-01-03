@@ -24,9 +24,9 @@ public class DAOFactory {
 	 public DAO<Article> getArticleDAO() {
 		return new ArticleDAO(cnx);
 	}
-//	 public DAO<User> getUserDAO() {
-//		 return new UserDAO();
-//	 }
+	 public DAO<User> getUserDAO() {
+		 return new UserDAO(cnx);
+	 }
 	 public DAO<Bid> getAuctionsDAO() {
 		 return new BidDAO(cnx);
    }
