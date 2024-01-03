@@ -25,14 +25,4 @@
     <servlet-name>auctionsList</servlet-name>
     <url-pattern>/auctions</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>bloup</display-name>
-    <servlet-name>bloup</servlet-name>
-    <servlet-class>fr.eni.encheres.ihm.servlets.bloup</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>bloup</servlet-name>
-    <url-pattern>/bloup</url-pattern>
-  </servlet-mapping>
 </web-app>
