@@ -11,20 +11,20 @@ public class ArticleRowMapper implements RowMapper<Article> {
 	@Override
 	public Article map(ResultSet rs) throws SQLException {
 		
-		int id = rs.getInt("no_article");
-		String name = rs.getString("nom_article");
+		int id = rs.getInt("article_id");
+		String name = rs.getString("article_name");
 		String description = rs.getString("description");
-		LocalDate startDate = rs.getDate("date_debut_encheres").toLocalDate();
-		LocalDate endDate = rs.getDate("date_fin_encheres").toLocalDate();
-		double startPrice = rs.getDouble("");
-		double finalPrice = rs.getDouble("");
-		int status = rs.getInt("");
-		int userId = rs.getInt("no_utilisateur");
+		LocalDate startDate = rs.getDate("start_auction_date").toLocalDate();
+		LocalDate endDate = rs.getDate("end_auction_date").toLocalDate();
+		int startPrice = rs.getInt("initial_price");
+		int finalPrice = rs.getInt("final_price");
+		int userId = rs.getInt("user_id");
+		int category = rs.getInt("category_id");
 		
 		
 		
 		
-		return new Article(id, name, description, startDate, endDate, startPrice, finalPrice, status, userId);
+		return new Article(id, name, description, startDate, endDate, startPrice, finalPrice, userId, category);
 	}
 	
 	
