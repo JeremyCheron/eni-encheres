@@ -26,7 +26,7 @@ public class ArticleDAO implements DAO<Article>{
 	
 
 	@Override
-	public Article selectByID(int id) {
+	public Article selectByID(int id) throws DALException {
 		Article article = null;
 		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_ID)){
 			stmt.setInt(1, id);
@@ -54,53 +54,53 @@ public class ArticleDAO implements DAO<Article>{
 	}
 
 	@Override
-	public void insert(Article article) throws Exception {
+	public void insert(Article article) throws DALException {
 
 		try (PreparedStatement stmt = daoHelper.createInsertStatement(article, cnx)) 
 		{
 			int affectedRows = stmt.executeUpdate();
 			
 			if(affectedRows == 0) {
-				throw new Exception("Insertion Failed, no rows affected.");
+				throw new DALException("Article : Insertion Failed, no rows affected.");
 			}
 			
 			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
 				if(generatedKeys.next()) {
 					article.setArticleId(generatedKeys.getInt(1));
 				} else {
-					throw new Exception("Insertion Failed, no ID obtained.");
+					throw new DALException("Article : Insertion Failed, no ID obtained.");
 				}
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Error during insertion.");
+			throw new DALException("Article : Error during insertion.");
 		}
 		
 	}
 
 	@Override
-	public void update(Article article) throws Exception {
+	public void update(Article article) throws DALException {
 		
 		try (PreparedStatement stmt = daoHelper.createUpdateStatement(article, cnx))
 		{ 
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new Exception("Update Fail");
+			throw new DALException("Article : Update Fail");
 		}
 		
 	}
 
 	@Override
-	public void delete(Article article) throws Exception {
+	public void delete(Article article) throws DALException {
 		
 		try(PreparedStatement stmt = daoHelper.deleteStatement(article, cnx))
 		{
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Error during deleting.");
+			throw new DALException("Article : Error during deleting.");
 		}
 	
 		
