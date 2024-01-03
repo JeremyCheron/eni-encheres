@@ -51,51 +51,51 @@ public class UserDAO implements DAO<User> {
 	}
 
 	@Override
-	public void insert(User user) throws Exception {
+	public void insert(User user) throws DALException {
 		
 		try (PreparedStatement stmt = daoHelper.createInsertStatement(user, cnx)) 
 		{
 			int affectedRows = stmt.executeUpdate();
 			 
 			if(affectedRows ==0) {
-				throw new Exception("User : Insertion Failed, no rows affected.");
+				throw new DALException("User : Insertion Failed, no rows affected.");
 			}
 			
 			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
 				if(generatedKeys.next()) {
 					user.setUserId(generatedKeys.getInt(1));
 				} else {
-					throw new Exception("Insertion Failed, no ID obtained.");
+					throw new DALException("Insertion Failed, no ID obtained.");
 				}
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("User : Error during insertion.");
+			throw new DALException("User : Error during insertion.");
 		}
 	}
 	
 	@Override
-	public void update(User user) throws Exception {
+	public void update(User user) throws DALException {
 		
 		try (PreparedStatement stmt = daoHelper.createUpdateStatement(user, cnx)) 
 		{
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new Exception("User : Update Fail");
+			throw new DALException("User : Update Fail");
 		}
 	}
 
 	@Override
-	public void delete(User user) throws Exception {
+	public void delete(User user) throws DALException {
 		 
 		try(PreparedStatement stmt = daoHelper.deleteStatement(user , cnx))
 		{
 			stmt.executeUpdate();
 		} catch ( SQLException e) {
 			e.printStackTrace();
-			throw new Exception("User : Error during deleting.");
+			throw new DALException("User : Error during deleting.");
 		}
 	}
 }
