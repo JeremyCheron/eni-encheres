@@ -15,8 +15,8 @@ public class BidDAO implements DAO<Bid> {
 	private Connection cnx;
 	private final DAOHelper<Bid> daoHelper;
 
-	private static final String SELECT_BY_ID = "SELECT * FROM ARTICLES WHERE article_id=?";
-	private static final String SELECT_ALL = "SELECT * FROM ARTICLES";
+	private static final String SELECT_BY_ID = "SELECT * FROM BIDS WHERE article_id=?";
+	private static final String SELECT_ALL = "SELECT * FROM BIDS";
 
 	public BidDAO(Connection cnx) {
 		this.cnx = cnx;

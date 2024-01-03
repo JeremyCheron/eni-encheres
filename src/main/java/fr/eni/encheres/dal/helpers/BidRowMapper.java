@@ -5,8 +5,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import fr.eni.encheres.bo.Bid;
@@ -28,11 +31,11 @@ public class BidRowMapper implements RowMapper<Bid>{
 
 	@Override
 	public PreparedStatement createInsertStatement(Bid bid, Connection cnx) throws SQLException {
-		String INSERT = "INSERT INTO BIDS(bid_date, bid_time, bid_amount, article_id, user_id) VALUES (?????)";
+		String INSERT = "INSERT INTO BIDS(bid_date, bid_time, bid_amount, article_id, user_id) VALUES (?,?,?,?,?)";
 		
-		PreparedStatement stmt =cnx.prepareStatement(INSERT);
+		PreparedStatement stmt =cnx.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
 		stmt.setDate(1, Date.valueOf(bid.getBidDate()));
-		stmt.setTime(2, Time.valueOf(bid.getBidTime()));
+		stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.of(bid.getBidDate(), bid.getBidTime())));
 		stmt.setInt(3, bid.getAmount());
 		stmt.setInt(4, bid.getSoldArticle());
 		stmt.setInt(5, bid.getBider());
@@ -47,7 +50,7 @@ public class BidRowMapper implements RowMapper<Bid>{
 		
 		PreparedStatement stmt = cnx.prepareStatement(UPDATE);
 		stmt.setDate(1, Date.valueOf(bid.getBidDate()));
-		stmt.setTime(2, Time.valueOf(bid.getBidTime()));
+		stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.of(bid.getBidDate(), bid.getBidTime())));
 		stmt.setInt(3, bid.getAmount());
 		stmt.setInt(4, bid.getSoldArticle());
 		stmt.setInt(5, bid.getBider());

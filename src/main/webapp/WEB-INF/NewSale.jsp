@@ -36,10 +36,10 @@
 					placeholder="44800">
 			</div>
 			<div>
-				<label for="vile">Ville*:</label> 
+				<label for="ville">Ville*:</label> 
 				<input type="text" id="ville"
 					name="nom" autofocus required pattern="[A-Za-z]{3,}"
-					placeholder="Saint Herblain">
+					placeholder="Saint Herblain" required>
 			</div>
 		</form>
 	</fieldset>

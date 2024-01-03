@@ -7,7 +7,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import fr.eni.encheres.bll.BLLException;
+import fr.eni.encheres.bll.UserManager;
 import fr.eni.encheres.bo.User;
+import fr.eni.encheres.dal.DAO;
+import fr.eni.encheres.dal.DAOFactory;
 
 /**
  * Servlet implementation class CreateUserServlet
@@ -37,6 +41,15 @@ public class CreateUserServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		
 		User newUser = new User(username, firstname, lastname, email, phone, street, postcode, city, password, 100);
+		newUser.setAdmin(false);
+		
+		try {
+			DAO<User> userDAO = new DAOFactory().getUserDAO();
+			UserManager userManager = UserManager.getInstance(userDAO);
+			userManager.createUser(newUser);
+		} catch (BLLException e) {
+			// TODO: handle exception
+		}
 		
 	}
 

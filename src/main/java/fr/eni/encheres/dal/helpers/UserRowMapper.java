@@ -29,19 +29,19 @@ public class UserRowMapper implements RowMapper<User> {
 	@Override
 	public PreparedStatement createInsertStatement(User user, Connection cnx) throws SQLException {
 		
-		String INSERT = "INSERT INTO dbo.USERS(user_name, user_lastName, user_firstName, user_email, user_city, user_street, user_password, user_password, user_phone, user_postCode, user_credit, user_isAdmin) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		String INSERT = "INSERT INTO USERS(username, last_name, first_name,phone, email, street, postal_code, city, password, credits, is_admin) VALUES(?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 		
 		PreparedStatement stmt = cnx.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 		
 		stmt.setString(1, user.getUsername());
 		stmt.setString(2, user.getLastname());
 		stmt.setString(3, user.getFirstname());
-		stmt.setString(4, user.getMail());
-		stmt.setString(5, user.getCity());
-		stmt.setString(6, user.getStreet());
-		stmt.setString(7, user.getPassword());
 		stmt.setString(8, user.getPhone());
+		stmt.setString(4, user.getMail());
+		stmt.setString(6, user.getStreet());
 		stmt.setInt(9, user.getPostCode());
+		stmt.setString(5, user.getCity());
+		stmt.setString(7, user.getPassword());
 		stmt.setInt(10, user.getPoints());
 		stmt.setBoolean(11, user.isAdmin());
 		
