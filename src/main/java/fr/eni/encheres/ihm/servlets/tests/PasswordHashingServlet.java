@@ -12,7 +12,12 @@ import fr.eni.encheres.utils.PasswordHashing;
 @WebServlet("/PasswordHashingServlet")
 public class PasswordHashingServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         // Récupération du mot de passe depuis le formulaire (à des fins de démonstration)

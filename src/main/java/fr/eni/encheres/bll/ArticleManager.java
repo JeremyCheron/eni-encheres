@@ -1,11 +1,9 @@
 package fr.eni.encheres.bll;
 
 import fr.eni.encheres.bo.Article;
-import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
 import fr.eni.encheres.dal.DAOFactory;
-import fr.eni.encheres.dal.UserDAO;
 
 public class ArticleManager {
 
