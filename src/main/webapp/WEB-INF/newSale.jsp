@@ -7,14 +7,14 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link
 	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/style.css">
+	  href="${pageContext.request.contextPath}/assets/css/style.css">
+<script src="${pageContext.request.contextPath}/assets/js/disabledWithdrawal.js"></script>
 <title>New Sale</title>
 </head>
 
@@ -26,7 +26,8 @@
 	<div class="flex items-center justify-center h-screen">
 
 
-		<form action="${pageContext.request.contextPath}/auctions" method="POST">
+		<form action="${pageContext.request.contextPath}/auctions"
+			method="POST">
 			<!-- ATTENTION : mettre la bonne servlet-->
 
 			<div>
@@ -45,7 +46,8 @@
 					<option value="informatique">Informatique</option>
 					<option value="ameublement">Furniture</option>
 					<option value="petit-electromenager">Small appliance</option>
-					<option value="gros-electromenager">large household appliances</option>
+					<option value="gros-electromenager">large household
+						appliances</option>
 					<option value="jeux">Games</option>
 					<option value="Livres">Books</option>
 				</select>
@@ -57,8 +59,8 @@
 			</div>
 
 			<div>
-				<label for="prix"> Pricing </label> <input type="number"
-					id="prix" name="prix" min="1" step="1">
+				<label for="prix"> Pricing </label> <input type="number" id="prix"
+					name="prix" min="1" step="1">
 			</div>
 
 			<div>
@@ -71,32 +73,37 @@
 			<div>
 				<label for="fin-enchere"> End of the auction</label> <input
 					type="date" name="fin-enchere" id="fin-enchere"
-					min="<%=LocalDate.now().format(formatter)%>" 
-					max="" required>
+					min="<%=LocalDate.now().format(formatter)%>" max="" required>
 				<!-- ATTENTION : faire en sorte que la date max = date début enchere + 30j-->
 			</div>
 
 			<fieldset>
 				<legend>Withdrawal</legend>
 				<div>
-					<label for="rue">Street*:</label> <input type="text" id="rue"
-						name="nom" autofocus required
-						placeholder="Rue des mouettes">
+					<label for="defaultAsdress"> Use my personal address as
+						withdrawal address</label> <input type="checkbox" name="defaultAddress" id="defaultAddress" onchange="disableAddress()">
 				</div>
-				<div>
-					<label for="code postal">Postal Code*:</label> <input type="text"
-						id="code postal" name="nom" autofocus required
-					 placeholder="44800">
-				</div>
-				<div>
-					<label for="ville">City*:</label> <input type="text" id="ville"
-						name="nom" autofocus required 
-						placeholder="Saint Herblain" required>
+				<div id="withdrawal">
+					<div>
+						<label for="street">Street*:</label> <input type="text" id="street"
+							name="street" autofocus required placeholder="Rue des mouettes">
+					</div>
+					<div>
+						<label for="postalCode">Postal Code*:</label> <input type="text"
+							id="postalCode" name="postalCode" autofocus required
+							placeholder="44800">
+					</div>
+					<div>
+						<label for="city">City*:</label> <input type="text" id="city"
+							name="city" autofocus required placeholder="Saint Herblain"
+							required>
+					</div>
 				</div>
 			</fieldset>
 
 			<div>
-				<button class="w-full bg-green-500 text-white p-2 rounded" type="submit" name="save">Save</button>
+				<button class="w-full bg-green-500 text-white p-2 rounded"
+					type="submit" name="save">Save</button>
 				<button type="button"
 					class="w-full bg-blue-500 text-white p-2 rounded"
 					onclick="window.location.href='auctions'">Cancel</button>
