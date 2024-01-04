@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class HomePageServlet
  */
-@WebServlet("/")
+@WebServlet("/Home")
 public class HomePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

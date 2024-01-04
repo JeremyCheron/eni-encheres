@@ -7,16 +7,16 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	  href="${pageContext.request.contextPath}/assets/css/style.css">
-<script src="${pageContext.request.contextPath}/assets/js/disabledWithdrawal.js"></script>
-<title>New Sale</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENI Auctions - Create Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/disabledWithdrawal.js"></script>
 </head>
+
+
 
 <%@ include file="../assets/commons/header.jsp"%>
 
@@ -80,23 +80,20 @@
 			<fieldset>
 				<legend>Withdrawal</legend>
 				<div>
-					<label for="defaultAsdress"> Use my personal address as
-						withdrawal address</label> <input type="checkbox" name="defaultAddress" id="defaultAddress" onchange="disableAddress()">
+					<label for="defaultAddress">Use an other adress than mine</label> <input type="checkbox" name="defaultAddress" id="defaultAddress" onchange="toggleInputs()">
 				</div>
 				<div id="withdrawal">
 					<div>
 						<label for="street">Street*:</label> <input type="text" id="street"
-							name="street" autofocus required placeholder="Rue des mouettes">
+							name="street" disabled>
 					</div>
 					<div>
 						<label for="postalCode">Postal Code*:</label> <input type="text"
-							id="postalCode" name="postalCode" autofocus required
-							placeholder="44800">
+							id="postalCode" name="postalCode" disabled>
 					</div>
 					<div>
 						<label for="city">City*:</label> <input type="text" id="city"
-							name="city" autofocus required placeholder="Saint Herblain"
-							required>
+							name="city" disabled>
 					</div>
 				</div>
 			</fieldset>

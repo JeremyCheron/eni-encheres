@@ -2,7 +2,7 @@ function validatePassword() {
     console.log("Validation function called");
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
-
+    
     console.log("Password:", password);
     console.log("Confirm Password:", confirmPassword);
 
