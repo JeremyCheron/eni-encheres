@@ -3,6 +3,7 @@ package fr.eni.encheres.bll;
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
+import fr.eni.encheres.dal.DAOFactory;
 
 public class UserManager {
 
@@ -10,13 +11,13 @@ public class UserManager {
 	private static UserManager instance;
 	private DAO<User> userDAO;
 	
-    private UserManager(DAO<User> userDAO) {
-        this.userDAO = userDAO;
+    private UserManager() {
+        this.userDAO = new DAOFactory().getUserDAO();
     }
 	
-	public static UserManager getInstance(DAO<User> userDAO) {
+	public static UserManager getInstance() {
 		if (instance == null) {
-			instance = new UserManager(userDAO);
+			instance = new UserManager();
 		}
 		return instance;
 	}

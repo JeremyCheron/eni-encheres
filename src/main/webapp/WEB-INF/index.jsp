@@ -41,7 +41,7 @@
             </div>
 
             <div class="mt-4">
-                <button type="button" class="w-full bg-blue-500 text-white p-2 rounded" onclick="window.location.href='create'">Sign In</button>
+                <button type="button" class="w-full bg-blue-500 text-white p-2 rounded" onclick="window.location.href='user/create-account'">Sign In</button>
             </div>
         </div>
     </div>

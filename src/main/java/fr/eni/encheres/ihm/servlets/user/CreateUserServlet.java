@@ -1,5 +1,6 @@
 package fr.eni.encheres.ihm.servlets.user;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,8 +24,8 @@ public class CreateUserServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/createProfile.jsp");
+		rd.forward(request, response);
 	}
 
 
@@ -44,8 +45,7 @@ public class CreateUserServlet extends HttpServlet {
 		newUser.setAdmin(false);
 		
 		try {
-			DAO<User> userDAO = new DAOFactory().getUserDAO();
-			UserManager userManager = UserManager.getInstance(userDAO);
+			UserManager userManager = UserManager.getInstance();
 			userManager.createUser(newUser);
 		} catch (BLLException e) {
 			// TODO: handle exception
