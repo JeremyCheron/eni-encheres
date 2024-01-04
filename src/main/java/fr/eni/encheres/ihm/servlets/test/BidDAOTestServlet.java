@@ -1,4 +1,4 @@
-package fr.eni.encheres.ihm.servlets;
+package fr.eni.encheres.ihm.servlets.test;
 
 import java.io.IOException;
 import java.sql.Connection;
