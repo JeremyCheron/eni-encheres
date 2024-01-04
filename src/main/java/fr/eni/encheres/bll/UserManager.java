@@ -1,5 +1,6 @@
 package fr.eni.encheres.bll;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
