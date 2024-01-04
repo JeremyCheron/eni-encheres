@@ -4,6 +4,7 @@ import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
 import fr.eni.encheres.dal.DAOFactory;
+import fr.eni.encheres.dal.UserDAO;
 
 public class UserManager {
 
@@ -37,6 +38,12 @@ public class UserManager {
 	        }
 	    }
 	
+	    public boolean login (String username, String password) throws BLLException, DALException {
+	    	UserDAO loginDAO = (UserDAO) new DAOFactory().getUserDAO();
+	    	return loginDAO.validateLogin(username, password);
+	    	
+	    }
+	    
 	private void validateUserData(User user) throws BLLException {
 
 		if (isUsernameAlreadyTaken(user.getUsername())) {

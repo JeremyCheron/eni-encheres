@@ -14,8 +14,9 @@ public class UserDAO implements DAO<User> {
 	private Connection cnx;
 	private final DAOHelper<User> daoHelper;
 	
-	private static final String SELECT_BY_ID = "SELECT * FROM dbo.USER WHERE user_id=?";
+	private static final String SELECT_BY_ID = "SELECT * FROM dbo.USERS WHERE user_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM dbo.USERS";
+	private static final String COMPARE_USER_PASS = "SELECT * FROM USERS WHERE username=? AND password=?";
 	
 	public UserDAO(Connection _cnx) {
 		this.cnx = _cnx;
@@ -97,5 +98,26 @@ public class UserDAO implements DAO<User> {
 			e.printStackTrace();
 			throw new DALException("User : Error during deleting.");
 		}
+	}
+
+	public boolean validateLogin(String username, String password) throws DALException {
+		
+		boolean isValid = false;
+		
+		try (PreparedStatement stmt = cnx.prepareStatement(COMPARE_USER_PASS))
+		{
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			
+			try (ResultSet rs = stmt.executeQuery()) 
+			{
+				isValid = rs.next();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return isValid;
 	}
 }
