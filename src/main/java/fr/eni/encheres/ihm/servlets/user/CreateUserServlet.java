@@ -22,7 +22,7 @@ public class CreateUserServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/createProfile.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/createProfile.jsp");
 		rd.forward(request, response);
 	}
 
