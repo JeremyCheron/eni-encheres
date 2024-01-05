@@ -51,13 +51,10 @@
 						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						name="category" id="category">
 						<option value="default" selected></option>
-						<option value="informatique">Informatique</option>
-						<option value="ameublement">Furniture</option>
-						<option value="petit-electromenager">Small appliance</option>
-						<option value="gros-electromenager">large household
-							appliances</option>
-						<option value="jeux">Games</option>
-						<option value="Livres">Books</option>
+						<option value="multimedia">Multimedia</option>
+						<option value="home">Home</option>
+						<option value="fashion">Fashion</option>
+						<option value="leisure">Leisure</option>
 					</select>
 				</div>
 
