@@ -10,7 +10,7 @@
 </head>
 <body class="bg-green-300">
 
-<%@ include file="../assets/commons/header.jsp" %>
+<%@ include file="../../assets/commons/header.jsp" %>
 
 
 	<div class="container mx-auto flex items-center justify-center mt-10 mb-10">
@@ -64,7 +64,7 @@
         </div>
     </div>
     
-<%@ include file="../assets/commons/footer.jsp" %>
+<%@ include file="../../assets/commons/footer.jsp" %>
 
 </body>
 </html>

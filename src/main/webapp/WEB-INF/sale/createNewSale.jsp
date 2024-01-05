@@ -22,7 +22,7 @@
 
 
 
-<%@ include file="../assets/commons/header.jsp"%>
+<%@ include file="../../assets/commons/header.jsp"%>
 
 <body class="bg-green-300">
 	<div class="pt-20">
@@ -123,5 +123,5 @@
 	</form>
 
 </body>
-<%@ include file="../assets/commons/footer.jsp"%>
+<%@ include file="../../assets/commons/footer.jsp"%>
 </html>

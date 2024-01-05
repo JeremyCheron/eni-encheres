@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.Objects" %>
+<%@ page import="java.util.Optional" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,6 +17,13 @@
 <body class="bg-green-300">
 
     <div class="flex items-center justify-center h-screen mt-10 mb-10">
+    
+		<% String loginError = Objects.toString(request.getAttribute("loginError"), ""); %>
+		<% if (!loginError.isEmpty()) { %>
+		    <div class="bg-red-500 text-white font-bold rounded-md p-4 mb-4">
+		        <%= loginError %>
+		    </div>
+		<% } %>
     
         <div class="bg-green-700 text-white p-8 rounded shadow-md w-96">
         

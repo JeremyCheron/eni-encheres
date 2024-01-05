@@ -20,7 +20,7 @@ public class CreateSaleServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher newSale = request.getRequestDispatcher("/WEB-INF/newSale.jsp");
+		RequestDispatcher newSale = request.getRequestDispatcher("/WEB-INF/sale/createNewSale.jsp");
 		newSale.forward(request, response);
 	}
 
@@ -45,7 +45,7 @@ public class CreateSaleServlet extends HttpServlet {
 			// TODO: handle exception
 		}
 
-		RequestDispatcher validSale = request.getRequestDispatcher("/WEB-INF/saleCreatedSuccesfully.jsp");
+		RequestDispatcher validSale = request.getRequestDispatcher("/WEB-INF/sale/saleCreatedSuccesfully.jsp");
 		validSale.forward(request, response);
 	}
 }

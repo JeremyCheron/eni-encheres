@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import fr.eni.encheres.bll.BLLException;
@@ -33,10 +35,17 @@ public class Login extends HttpServlet {
 		
 		try {
 			
-			if(userManager.login(username, password)) 
-			{
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/testLogin.jsp");
-				rd.forward(request, response);
+			if (userManager.login(username, password)) {
+			    HttpSession session = request.getSession();
+			    session.setAttribute("username", username);
+			    session.setAttribute("logged", true);
+
+			    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/testLogin.jsp");
+			    rd.forward(request, response);
+			} else {
+			    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/index.jsp");
+			    request.setAttribute("loginError", "Invalid username or password. Please try again.");
+			    rd.forward(request, response);
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();

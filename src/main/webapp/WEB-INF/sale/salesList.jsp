@@ -10,17 +10,21 @@
     <title>ENI Auctions - Auctions List</title>
 </head>
 
-<%@ include file="../assets/commons/header.jsp" %>
+<%@ include file="../../assets/commons/header.jsp" %>
 
 <body class="bg-green-300">
 
     <div class="flex items-center justify-center h-screen">
     
     	<h1> Auctions List</h1>
+    	
+    	<% if (session.getAttribute("username") != null) { %>
+			Bonjour, <%= session.getAttribute("username") %> !
+		<% } %>
         
     </div>
     
-<%@ include file="../assets/commons/footer.jsp" %>
+<%@ include file="../../assets/commons/footer.jsp" %>
 
 </body>
 </html>
