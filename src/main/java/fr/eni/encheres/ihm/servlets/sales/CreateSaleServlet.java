@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/newSale")
-public class NewSaleServlet extends HttpServlet {
+public class CreateSaleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +33,7 @@ public class NewSaleServlet extends HttpServlet {
 		LocalDate endDate = DateConversionUtil.convertInputDateToLocalDate(request.getParameter("endDate"));
 		int startPrice = Integer.parseInt(request.getParameter("price"));
 		int finalPrice = Integer.parseInt(request.getParameter("price"));
-		int userId = 1;
+		int userId = 2;
 		int categoryId = 1;
 
 		Article newArticle = new Article(name, description, startDate, endDate, startPrice, finalPrice, userId,

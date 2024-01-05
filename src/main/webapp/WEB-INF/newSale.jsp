@@ -28,59 +28,59 @@
 	<div class="pt-20">
 		<h1 class="text-center align-middle">New Sale</h1>
 	</div>
-	<div class="flex items-center justify-center h-screen">
 
-		<div class="bg-green-700 text-white p-8 rounded shadow-md w-96">
-			<form action="${pageContext.request.contextPath}/newSale"
-				method="POST">
+	<form action="${pageContext.request.contextPath}/newSale" method="POST">
+		<div class="flex items-center justify-center h-4/5">
+			<div class="bg-green-700 text-white p-8 rounded shadow-md w-3/10">
 
 				<div>
-					<label for="article">Article :</label> 
-					<input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" type="text" name="article" id="article">
- 				</div>
+					<label for="article">Article :</label> <input
+						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+						type="text" name="article" id="article">
+				</div>
 				<div>
 					<label class="flex-initial" for="description">Description :</label>
-					<textarea class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" id="champ_description" name="champ_description"
-						placeholder="Description de l'article" required></textarea>
+					<textarea
+						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+						id="champ_description" name="champ_description"
+						placeholder="Description of the article" required></textarea>
 				</div>
 
 				<div>
-					<label class="flex-initial" for="categorie">Category</label>
-					 <select class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+					<label class="flex-initial" for="categorie">Category</label> <select
+						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						name="category" id="category">
 						<option value="default" selected></option>
-						<option value="informatique">Informatique</option>
-						<option value="ameublement">Furniture</option>
-						<option value="petit-electromenager">Small appliance</option>
-						<option value="gros-electromenager">large household
-							appliances</option>
-						<option value="jeux">Games</option>
-						<option value="Livres">Books</option>
+						<option value="multimedia">Multimedia</option>
+						<option value="home">Home</option>
+						<option value="fashion">Fashion</option>
+						<option value="leisure">Leisure</option>
 					</select>
 				</div>
 
 				<div>
-					<label for="photo"> Picture of the item </label> <input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" type="file"
-						id="photo" accept="image/*">
+					<label for="photo"> Picture of the item </label> <input
+						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+						type="file" id="photo" accept="image/*">
 				</div>
 
 				<div>
-					<label for="price"> Pricing </label> 
-					<input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" type="number" id="price"
-						name="price" min="1" step="1">
+					<label for="price"> Pricing </label> <input
+						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+						type="number" id="price" name="price" min="1" step="1">
 				</div>
 
 				<div>
-					<label for="startDate"> Beginning of the auction </label> 
-					<input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+					<label for="startDate"> Beginning of the auction </label> <input
+						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						type="date" name="startDate" id="startDate"
 						min="<%=LocalDate.now().format(formatter)%>"
 						value="<%=LocalDate.now().format(formatter)%>" required>
 				</div>
 
 				<div>
-					<label for="endDate"> End of the auction</label> 
-					<input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+					<label for="endDate"> End of the auction</label> <input
+						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						type="date" name="endDate" id="endDate"
 						min="<%=LocalDate.now().format(formatter)%>" max="" required>
 					<!-- ATTENTION : faire en sorte que la date max = date début enchere + 30j-->
@@ -89,39 +89,39 @@
 				<fieldset class="border border-slate-600 rounded p-2">
 					<legend>Withdrawal</legend>
 					<div>
-						<label for="defaultAddress">Use an other adress than mine</label>
+						<label for="defaultAddress" class="flex-initial">Use an other adress than mine</label>
 						<input type="checkbox" name="defaultAddress" id="defaultAddress"
 							onchange="toggleInputs()">
 					</div>
 					<div id="withdrawal">
 						<div>
-							<label for="street">Street*:</label> 
-							<input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" type="text"
-								id="street" name="street" disabled>
+							<label for="street">Street*:</label> <input
+								class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+								type="text" id="street" name="street" disabled>
 						</div>
 						<div>
-							<label for="postalCode">Postal Code*:</label> 
-							<input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" type="text"
-								id="postalCode" name="postalCode" disabled>
+							<label for="postalCode">Postal Code*:</label> <input
+								class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+								type="text" id="postalCode" name="postalCode" disabled>
 						</div>
 						<div>
-							<label for="city">City*:</label> 
-							<input class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" type="text" id="city"
-								name="city" disabled>
+							<label for="city">City*:</label> <input
+								class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
+								type="text" id="city" name="city" disabled>
 						</div>
 					</div>
 				</fieldset>
-
-				<div class="p-50">
-					<button class="w-full bg-green-500 text-white p-2 rounded"
+				<div>
+					<button class="w-full bg-green-500 text-white p-2 my-5 rounded"
 						type="submit" name="save">Create a new Sale</button>
 					<button type="button"
 						class="w-full bg-blue-500 text-white p-2 rounded"
 						onclick="window.location.href='index'">Cancel</button>
 				</div>
-			</form>
+			</div>
 		</div>
-	</div>
+	</form>
+
 </body>
 <%@ include file="../assets/commons/footer.jsp"%>
 </html>
