@@ -36,12 +36,12 @@ public class UserRowMapper implements RowMapper<User> {
 		stmt.setString(1, user.getUsername());
 		stmt.setString(2, user.getLastname());
 		stmt.setString(3, user.getFirstname());
-		stmt.setString(8, user.getPhone());
-		stmt.setString(4, user.getMail());
+		stmt.setString(4, user.getPhone());
+		stmt.setString(5, user.getMail());
 		stmt.setString(6, user.getStreet());
-		stmt.setInt(9, user.getPostCode());
-		stmt.setString(5, user.getCity());
-		stmt.setString(7, user.getPassword());
+		stmt.setInt(7, user.getPostCode());
+		stmt.setString(8, user.getCity());
+		stmt.setString(9, user.getPassword());
 		stmt.setInt(10, user.getPoints());
 		stmt.setBoolean(11, user.isAdmin());
 		

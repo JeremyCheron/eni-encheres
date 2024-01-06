@@ -28,7 +28,7 @@
 		<div class="mt-4">
 			<button type="button"
 				class="w-full bg-green-500 hover:bg-green-700 text-white p-2 rounded"
-				onclick="window.location.href='../newSale'">Create a new sale</button>
+				onclick="window.location.href='${pageContext.request.contextPath}/newSale'">Create a new sale</button>
 			<button type="button"
 				class="w-full bg-blue-500 hover:bg-blue-700 text-white p-2 rounded"
 				onclick="window.location.href='${pageContext.request.contextPath}'">Go back to the home

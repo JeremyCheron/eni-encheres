@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%!DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");%>
 
 <!DOCTYPE html>
@@ -21,25 +23,23 @@
 </head>
 
 
-
+<body class="bg-green-300">
 <%@ include file="../../assets/commons/header.jsp"%>
 
-<body class="bg-green-300">
-	<div class="pt-20">
-		<h1 class="text-center align-middle">New Sale</h1>
-	</div>
+		<h1 class="text-center align-middle text-xl my-10">New Sale</h1>
 
-	<form action="${pageContext.request.contextPath}/newSale" method="POST">
-		<div class="flex items-center justify-center h-4/5">
-			<div class="bg-green-700 text-white p-8 rounded shadow-md w-3/10">
+
+	<form action="${pageContext.request.contextPath}/newSale" method="POST" class="h-3/4 flex items-center justify-center mb-10">
+			<div class="bg-green-700 text-white p-8 rounded shadow-md w-3/10 mb-10">
 
 				<div>
-					<label for="article">Article :</label> <input
+					<label for="article">Article* :</label> 
+					<input
 						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
-						type="text" name="article" id="article">
+						type="text" name="article" id="article" required>
 				</div>
 				<div>
-					<label class="flex-initial" for="description">Description :</label>
+					<label class="flex-initial" for="description">Description* :</label>
 					<textarea
 						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						id="champ_description" name="champ_description"
@@ -47,14 +47,14 @@
 				</div>
 
 				<div>
-					<label class="flex-initial" for="categorie">Category</label> <select
+					<label class="flex-initial" for="category">Category</label>
+					 <select
 						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						name="category" id="category">
 						<option value="default" selected></option>
-						<option value="multimedia">Multimedia</option>
-						<option value="home">Home</option>
-						<option value="fashion">Fashion</option>
-						<option value="leisure">Leisure</option>
+							<c:forEach var="current" items="${categories}">
+								<option value="${current.getId()}"> ${current.getName()} </option>
+							</c:forEach>
 					</select>
 				</div>
 
@@ -121,7 +121,7 @@
 			</div>
 		</div>
 	</form>
+<%@ include file="../../assets/commons/footer.jsp"%>
 
 </body>
-<%@ include file="../../assets/commons/footer.jsp"%>
 </html>
