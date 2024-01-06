@@ -8,7 +8,7 @@
 <%!DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");%>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" >
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,10 +20,12 @@
 	href="${pageContext.request.contextPath}/assets/css/style.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/assets/js/disabledWithdrawal.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/assets/js/modifyDates.js"></script>
 </head>
 
 
-<body class="bg-green-300">
+<body class="bg-green-300" onload="changeEndDateAccordingToStartDate()">
 <%@ include file="../../assets/commons/header.jsp"%>
 
 		<h1 class="text-center align-middle text-xl my-10">New Sale</h1>
@@ -75,15 +77,17 @@
 						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						type="date" name="startDate" id="startDate"
 						min="<%=LocalDate.now().format(formatter)%>"
-						value="<%=LocalDate.now().format(formatter)%>" required>
+						value="<%=LocalDate.now().format(formatter)%>" required
+						onchange="changeEndDateAccordingToStartDate()">
 				</div>
 
 				<div>
-					<label for="endDate"> End of the auction</label> <input
+					<label for="endDate"> End of the auction</label> 
+					<input
 						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4"
 						type="date" name="endDate" id="endDate"
-						min="<%=LocalDate.now().format(formatter)%>" max="" required>
-					<!-- ATTENTION : faire en sorte que la date max = date début enchere + 30j-->
+						min="<%=LocalDate.now().format(formatter)%>" max="" value="<%=LocalDate.now().format(formatter)%>" required
+					>
 				</div>
 
 				<fieldset class="border border-slate-600 rounded p-2">
@@ -116,7 +120,7 @@
 						type="submit" name="save">Create a new Sale</button>
 					<button type="button"
 						class="w-full bg-blue-500 text-white p-2 rounded"
-						onclick="window.location.href='index'">Cancel</button>
+						onclick="window.location.href='${pageContext.request.contextPath}'">Cancel</button>
 				</div>
 			</div>
 		</div>
