@@ -1,3 +1,5 @@
 context.xml
 *.jar
 /build/
+/.settings/
+/.classpath
