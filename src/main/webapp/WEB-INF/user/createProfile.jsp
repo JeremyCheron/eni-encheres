@@ -14,13 +14,13 @@
 
 
 	<div class="container mx-auto flex items-center justify-center mt-10 mb-10">
-        <div class="bg-green-700 text-white p-8 rounded shadow-md w-full md:w-96">
+        <div class="bg-green-700 text-white p-8 rounded shadow-md w-full md:w-96 mb-10">
                 <img alt="Logo JFA" src="${pageContext.request.contextPath}/assets/images/logoJFA.png" class="mx-auto mb-6">
         
             <h1 class="text-2xl font-bold mb-6">Sign In</h1>
 
 			<form action="${pageContext.request.contextPath}/user/create-account" id="registrationForm" method="post" onsubmit="return validatePassword()">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-3/4 " >
                     <div>
                         <label class="block text-gray-200 mb-2">Username:</label>
                         <input type="text" class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" name="username" required>
