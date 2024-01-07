@@ -14,7 +14,7 @@ public class CategoryManager {
 	private DAO<Category> categoryDAO;
 	
     private CategoryManager() {
-        this.categoryDAO = new DAOFactory().getCategoryDao();
+        this.categoryDAO = new DAOFactory().getCategoryDAO();
     }
 	
 	public static CategoryManager getInstance() {

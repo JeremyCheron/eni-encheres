@@ -16,7 +16,7 @@
 
 <body>
 
-    <div class="flex items-center justify-center h-screen mt-10 mb-10">
+    <div class="flex items-center justify-center h-screen my-10">
     
 		<% String loginError = Objects.toString(request.getAttribute("loginError"), ""); %>
 		<% if (!loginError.isEmpty()) { %>
@@ -31,7 +31,7 @@
         
             <h1 class="text-2xl font-bold mb-6">Login</h1>
 
-            <form ACTION="${pageContext.request.contextPath}/user/login" METHOD="post">
+            <form ACTION="${pageContext.request.contextPath}/user/login" METHOD="post" class="">
                 <label class="block text-gray-200 mb-2">Username:</label>
                 <input type="text" class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" name="username" required>
 

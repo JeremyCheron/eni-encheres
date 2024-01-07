@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENI Auctions - Create Account</title>
+<title>ENI Auctions - Create New Sale</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
 	rel="stylesheet">
@@ -30,8 +30,8 @@
 
 		<h1 class="text-center align-middle text-xl my-10">New Sale</h1>
 
-
-	<form action="${pageContext.request.contextPath}/newSale" method="POST" class="h-3/4 flex items-center justify-center mb-10">
+<!--enctype="multipart/form-data"  -->
+	<form action="${pageContext.request.contextPath}/newSale" method="POST"   class="h-3/4 flex items-center justify-center mb-10">
 			<div class="bg-green-700 text-white p-8 rounded shadow-md w-3/10 mb-10">
 
 				<div>
@@ -55,7 +55,7 @@
 						name="category" id="category">
 						<option value="default" selected></option>
 							<c:forEach var="current" items="${categories}">
-								<option value="${current.getId()}"> ${current.getName()} </option>
+								<option value="${current.getCategoryId()}"> ${current.getName()} </option>
 							</c:forEach>
 					</select>
 				</div>

@@ -77,6 +77,7 @@ public class ArticleDAO implements DAO<Article>{
 			throw new DALException("Article : Error during insertion.");
 		}
 	}
+	
 		
 	@Override
 	public void update(Article article) throws DALException {
