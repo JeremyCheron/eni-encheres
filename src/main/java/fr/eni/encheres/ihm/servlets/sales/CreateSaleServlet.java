@@ -48,7 +48,7 @@ public class CreateSaleServlet extends HttpServlet {
 		LocalDate endDate = DateConversionUtil.convertInputDateToLocalDate(request.getParameter("endDate"));
 		int startPrice = Integer.parseInt(request.getParameter("price"));
 		int finalPrice = Integer.parseInt(request.getParameter("price"));
-		int userId = 5;
+		int userId = 6;
 		int categoryId = Integer.parseInt(request.getParameter("category"));
 
 		Article newArticle = new Article(name, description, startDate, endDate, startPrice, finalPrice, userId,
