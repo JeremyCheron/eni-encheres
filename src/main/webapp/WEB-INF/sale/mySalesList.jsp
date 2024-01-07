@@ -21,7 +21,7 @@
 </head>
 
 
-<body class="bg-green-300">
+<body>
 
 	<%@ include file="../../assets/commons/header.jsp"%>
 

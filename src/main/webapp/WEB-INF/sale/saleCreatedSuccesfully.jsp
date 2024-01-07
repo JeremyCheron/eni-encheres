@@ -13,8 +13,9 @@
 	href="${pageContext.request.contextPath}/assets/css/style.css">
 </head>
 
-<%@ include file="../../assets/commons/header.jsp"%>
-<body class="bg-green-300">
+
+<body>
+	<%@ include file="../../assets/commons/header.jsp"%>
 
 	<div class="pt-20">
 		<h1 class="text-center align-middle">Your Sale has been created
@@ -28,12 +29,14 @@
 		<div class="mt-4">
 			<button type="button"
 				class="w-full bg-green-500 hover:bg-green-700 text-white p-2 rounded"
-				onclick="window.location.href='${pageContext.request.contextPath}/newSale'">Create a new sale</button>
+				onclick="window.location.href='${pageContext.request.contextPath}/newSale'">Create
+				a new sale</button>
 			<button type="button"
 				class="w-full bg-blue-500 hover:bg-blue-700 text-white p-2 rounded"
-				onclick="window.location.href='${pageContext.request.contextPath}'">Go back to the home
-				page</button>
+				onclick="window.location.href='${pageContext.request.contextPath}'">Go
+				back to the home page</button>
 		</div>
 	</div>
+	<%@ include file="../../assets/commons/footer.jsp"%>
 </body>
 </html>

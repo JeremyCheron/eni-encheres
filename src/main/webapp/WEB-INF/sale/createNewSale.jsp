@@ -25,7 +25,7 @@
 </head>
 
 
-<body class="bg-green-300" onload="changeEndDateAccordingToStartDate()">
+<body onload="changeEndDateAccordingToStartDate()">
 <%@ include file="../../assets/commons/header.jsp"%>
 
 		<h1 class="text-center align-middle text-xl my-10">New Sale</h1>

@@ -14,7 +14,7 @@
 
 <%@ include file="../assets/commons/header.jsp" %>
 
-<body class="bg-green-300">
+<body>
 
     <div class="flex items-center justify-center h-screen mt-10 mb-10">
     

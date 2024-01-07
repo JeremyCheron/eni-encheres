@@ -8,7 +8,7 @@
    	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css">
     <script src="${pageContext.request.contextPath}/assets/js/confirmPassword.js"></script>
 </head>
-<body class="bg-green-300">
+<body>
 
 <%@ include file="../../assets/commons/header.jsp" %>
 
