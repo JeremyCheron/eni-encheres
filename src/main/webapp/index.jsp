@@ -7,15 +7,15 @@
 
 <body>
 
-<% String loginError = Objects.toString(request.getAttribute("loginError"), ""); %>
-		<% if (!loginError.isEmpty()) { %>
+	<c:set var="errorMsg" value="incorrect login or password"/>
+		<c:if test="${!empty requestScope.loginError}">
 		<div class="flex items-center justify-center"> 
 		    <div class="bg-red-500 text-white font-bold rounded-md p-4 my-5 w-1/4 text-center">
-		        <%= loginError %>
-		        
+		        ${errorMsg} 
 		    </div>
 		 </div>
-		<% } %>
+		</c:if>		
+		
     <div class="flex items-center justify-center mt-12">
     
         <div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">

@@ -23,7 +23,7 @@ public class Login extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/loginForm.jsp");
 		rd.forward(request, response);
 	}
 
