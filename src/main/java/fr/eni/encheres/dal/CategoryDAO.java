@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import fr.eni.encheres.bll.error.ErrorManager;
 import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.Category;
 import fr.eni.encheres.dal.helpers.CategoryRowMapper;
@@ -20,10 +21,12 @@ public class CategoryDAO implements DAO<Category>{
 
 	private Connection cnx;
 	private final DAOHelper<Category> daoHelper;
+	private ErrorManager errorManager;
 	
 	public CategoryDAO(Connection cnx) {
 		this.cnx = cnx;
 		this.daoHelper = new DAOHelper<>(new CategoryRowMapper());
+        this.errorManager = new ErrorManager();
 	}
 	
 	@Override
@@ -49,42 +52,35 @@ public class CategoryDAO implements DAO<Category>{
 			ResultSet rs = stmt.executeQuery();
 			categories = daoHelper.mapResults(rs);
 		} catch (Exception e) {
-			System.err.println("failed to retrieve categories List");		
-			throw new DALException("failed to retrieve categories List");
+			throw new DALException(errorManager.getErrorMessage("10200"), "10200");
 		}
 		return categories;
 	}
-//	@Override
-//	public void insert(Category category) throws DALException {
-//
-//		try (PreparedStatement stmt = daoHelper.createInsertStatement(category, cnx)) 
-//		{
-//			int affectedRows = stmt.executeUpdate();
-//			
-//			if(affectedRows == 0) {
-//				throw new DALException("Category : Insertion Failed, no rows affected.");
-//			}
-//			
-//			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-//				if(generatedKeys.next()) {
-//					category.setId(affectedRows);
-//				} else {
-//					throw new DALException("Category : Insertion Failed, no ID obtained.");
-//				}
-//			}
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			throw new DALException("Category : Error during insertion.");
-//		}
-//	}
-	
 	@Override
 	public void insert(Category category) throws DALException {
-		
-		throw new DALException("You should not insert categories !"); 
-		
+
+		try (PreparedStatement stmt = daoHelper.createInsertStatement(category, cnx)) 
+		{
+			int affectedRows = stmt.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new DALException(errorManager.getErrorMessage("10201"), "10201");
+			}
+			
+			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+				if(generatedKeys.next()) {
+					category.setCategoryId(affectedRows);
+				} else {
+					throw new DALException(errorManager.getErrorMessage("10202"), "10202");
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException(errorManager.getErrorMessage("10203"), "10203");
+		}
 	}
+
 
 	@Override
 	public void update(Category category) throws DALException {
@@ -94,7 +90,7 @@ public class CategoryDAO implements DAO<Category>{
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DALException("Category : Update Fail");
+			throw new DALException(errorManager.getErrorMessage("10204"), "10204");
 		}
 		
 	}
@@ -107,7 +103,7 @@ public class CategoryDAO implements DAO<Category>{
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Category : Error during deleting.");
+			throw new DALException(errorManager.getErrorMessage("10205"), "10205");
 		}
 	
 		

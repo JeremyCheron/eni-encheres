@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import fr.eni.encheres.bll.error.ErrorManager;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.dal.helpers.BidRowMapper;
@@ -16,13 +17,16 @@ import fr.eni.encheres.dal.helpers.DAOHelper;
 public class BidDAO implements DAO<Bid> {
 	private Connection cnx;
 	private final DAOHelper<Bid> daoHelper;
+	private ErrorManager errorManager;
 
 	private static final String SELECT_BY_ID = "SELECT * FROM BIDS WHERE article_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM BIDS";
+	private static final String SELECT_HIGHEST_BID = "SELECT * FROM BIDS WHERE article_id=? ORDER BY bid_amount DESC LIMIT 1";
 
 	public BidDAO(Connection cnx) {
 		this.cnx = cnx;
 		this.daoHelper = new DAOHelper<>(new BidRowMapper());
+        this.errorManager = new ErrorManager();
 	}
 
 	@Override
@@ -60,19 +64,19 @@ public class BidDAO implements DAO<Bid> {
 			int affectedRows = stmt.executeUpdate();
 			
 			if(affectedRows == 0) {
-				throw new DALException("Bid Insertion Failed, no rows affected.");
+				throw new DALException(errorManager.getErrorMessage("10300"), "10300");
 			}
 		try (ResultSet generatedKeys = stmt.getGeneratedKeys()){
 			if(generatedKeys.next()) {
 				bid.setBidId(generatedKeys.getInt(1));
 			} else {
-				throw new DALException("Bid Insertion Failed, no ID obtained.");
+				throw new DALException(errorManager.getErrorMessage("10301"), "10301");
 			}
 		}
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Error during insertion.");
+			throw new DALException(errorManager.getErrorMessage("10302"), "10302");
 		}
 	}
 
@@ -83,7 +87,7 @@ public class BidDAO implements DAO<Bid> {
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DALException("Bid Update Fail");
+			throw new DALException(errorManager.getErrorMessage("10303"), "10303");
 		}
 	}
 
@@ -94,7 +98,7 @@ public class BidDAO implements DAO<Bid> {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Error during deleting.");
+			throw new DALException(errorManager.getErrorMessage("10304"), "10304");
 		}
 	}
 	
@@ -127,6 +131,25 @@ public class BidDAO implements DAO<Bid> {
 		
 		return bids;
 		
+	}
+	
+	public Bid getHighestBid(int articleId) throws DALException {
+		Bid highestBid = null;
+		try (PreparedStatement stmt = cnx.prepareStatement(SELECT_HIGHEST_BID)) {
+			stmt.setInt(1, articleId);
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				BidRowMapper bidRowMapper = new BidRowMapper();
+				highestBid = bidRowMapper.map(rs);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return highestBid;
 	}
 
 }

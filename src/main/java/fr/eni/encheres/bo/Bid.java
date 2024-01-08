@@ -16,6 +16,14 @@ public class Bid {
 
 	public Bid() {
 	}
+	
+
+	public Bid(int amount, int soldArticle, int bider) {
+		this.amount = amount;
+		this.soldArticle = soldArticle;
+		this.bider = bider;
+	}
+
 
 	public Bid(LocalDate _bidDate, LocalTime _bidTime, int _amount,
 			int _soldArticle,  int _bider) {

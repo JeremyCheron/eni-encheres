@@ -28,7 +28,7 @@ public class DAOFactory {
 	 public DAO<User> getUserDAO() {
 		 return new UserDAO(cnx);
 	 }
-	 public DAO<Bid> getAuctionsDAO() {
+	 public DAO<Bid> getBidDAO() {
 		 return new BidDAO(cnx);
    }
 	 
