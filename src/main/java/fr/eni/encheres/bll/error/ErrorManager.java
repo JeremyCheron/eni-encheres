@@ -31,7 +31,7 @@ public class ErrorManager {
 	
 	public String getErrorMessage(String errorCode) {
 		String errorMessage = errorsProperties.getProperty(errorCode);
-		return (errorMessage != null) ? errorMessage : "Unknown Error Code" + errorCode;
+		return (errorMessage != null) ? errorMessage : "Unknown Error Code : " + errorCode;
 	}
 	
 }
