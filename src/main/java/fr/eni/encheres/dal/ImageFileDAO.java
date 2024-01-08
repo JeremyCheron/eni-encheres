@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import fr.eni.encheres.bo.ImageFile;
 import fr.eni.encheres.dal.helpers.DAOHelper;
@@ -94,6 +95,12 @@ public class ImageFileDAO implements DAO<ImageFile> {
 			e.printStackTrace();
 			throw new DALException("Error during deleting.");
 		}
+	}
+
+	@Override
+	public List<ImageFile> selectByCriteria(Map<String, Object> criteria) throws DALException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
