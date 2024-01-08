@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.dal.helpers.BidRowMapper;
 import fr.eni.encheres.dal.helpers.DAOHelper;
@@ -94,6 +96,37 @@ public class BidDAO implements DAO<Bid> {
 			e.printStackTrace();
 			throw new DALException("Error during deleting.");
 		}
+	}
+	
+	@Override
+	public List<Bid> selectByCriteria(Map<String, Object> criteria) throws DALException {
+		
+		List<Bid> bids = new ArrayList<>();
+
+		String query = "SELECT * FROM articles WHERE";
+		for (String field : criteria.keySet()) {
+			query += " " + field + " = ? AND";
+		}
+		query = query.substring(0, query.length() - 4);
+		
+		try(PreparedStatement stmt = cnx.prepareStatement(query)){
+			int parameterIndex = 1;
+			for (Object value : criteria.values()) {
+				stmt.setObject(parameterIndex++, value);
+			}
+			
+			try (ResultSet rs = stmt.executeQuery()) {
+				while (rs.next()) {
+					bids = daoHelper.mapResults(rs);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return bids;
+		
 	}
 
 }

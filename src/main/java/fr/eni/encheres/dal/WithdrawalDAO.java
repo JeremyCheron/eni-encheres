@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.Withdrawal;
 import fr.eni.encheres.dal.helpers.DAOHelper;
 import fr.eni.encheres.dal.helpers.WithdrawalRowMapper;
@@ -105,4 +107,35 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 		
 	}
 
+	@Override
+	public List<Withdrawal> selectByCriteria(Map<String, Object> criteria) throws DALException {
+		
+		List<Withdrawal> withdrawals = new ArrayList<>();
+
+		String query = "SELECT * FROM articles WHERE";
+		for (String field : criteria.keySet()) {
+			query += " " + field + " = ? AND";
+		}
+		query = query.substring(0, query.length() - 4);
+		
+		try(PreparedStatement stmt = cnx.prepareStatement(query)){
+			int parameterIndex = 1;
+			for (Object value : criteria.values()) {
+				stmt.setObject(parameterIndex++, value);
+			}
+			
+			try (ResultSet rs = stmt.executeQuery()) {
+				while (rs.next()) {
+					withdrawals = daoHelper.mapResults(rs);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return withdrawals;
+		
+	}
+	
 }
