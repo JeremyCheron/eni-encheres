@@ -2,7 +2,7 @@ package fr.eni.encheres.bll;
 
 import java.util.List;
 
-import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.bll.error.ErrorManager;
 import fr.eni.encheres.bo.ImageFile;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
@@ -12,9 +12,12 @@ public class ImageFileManager {
 
 	private static ImageFileManager instance;
 	private DAO<ImageFile> imageFileDAO;
+	private ErrorManager errorManager;
+	
 
 	private ImageFileManager() {
 		this.imageFileDAO = new DAOFactory().getImageFileDAO();
+        this.errorManager = new ErrorManager();
 	}
 
 	public static ImageFileManager getInstance() {
@@ -33,7 +36,7 @@ public class ImageFileManager {
 		try {
 			imageFileDAO.insert(image);
 		} catch (DALException e) {
-			throw new BLLException();
+			throw new BLLException(errorManager.getErrorMessage("20102"), "20102");
 		}
 	}
 
@@ -41,7 +44,7 @@ public class ImageFileManager {
 		try {
 	    	return imageFileDAO.selectAll();
 	    } catch (DALException e) {
-			throw new BLLException();
+			throw new BLLException(errorManager.getErrorMessage("20102"), "20102");
 		}
 
 	}
@@ -50,7 +53,7 @@ public class ImageFileManager {
 		try {
 			return imageFileDAO.selectAll().stream().filter(i -> i.getArticleId()==articleID).toList();
 		} catch (DALException e) {
-			throw new BLLException();
+			throw new BLLException(errorManager.getErrorMessage("20102"), "20102");
 		}
 	}
 
