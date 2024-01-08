@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import fr.eni.encheres.bll.error.ErrorManager;
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.helpers.DAOHelper;
 import fr.eni.encheres.dal.helpers.UserRowMapper;
@@ -16,6 +17,7 @@ public class UserDAO implements DAO<User> {
 
 	private Connection cnx;
 	private final DAOHelper<User> daoHelper;
+	private ErrorManager errorManager;
 
 	private static final String SELECT_BY_ID = "SELECT * FROM dbo.USERS WHERE user_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM dbo.USERS";
@@ -24,6 +26,7 @@ public class UserDAO implements DAO<User> {
 	public UserDAO(Connection _cnx) {
 		this.cnx = _cnx;
 		this.daoHelper = new DAOHelper<User>(new UserRowMapper());
+        this.errorManager = new ErrorManager();
 	}
 
 	@Override
@@ -61,20 +64,20 @@ public class UserDAO implements DAO<User> {
 			int affectedRows = stmt.executeUpdate();
 
 			if (affectedRows == 0) {
-				throw new DALException("User : Insertion Failed, no rows affected.");
+				throw new DALException(errorManager.getErrorMessage("10000"), "10000");
 			}
 
 			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
 				if (generatedKeys.next()) {
 					user.setUserId(generatedKeys.getInt(1));
 				} else {
-					throw new DALException("Insertion Failed, no ID obtained.");
+					throw new DALException(errorManager.getErrorMessage("10001"), "10001");
 				}
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("User : Error during insertion.");
+			throw new DALException(errorManager.getErrorMessage("10002"), "10002");
 		}
 	}
 
@@ -85,7 +88,7 @@ public class UserDAO implements DAO<User> {
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DALException("User : Update Fail");
+			throw new DALException(errorManager.getErrorMessage("10003"), "10003");
 		}
 	}
 
@@ -96,7 +99,7 @@ public class UserDAO implements DAO<User> {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("User : Error during deleting.");
+			throw new DALException(errorManager.getErrorMessage("10004"), "10004");
 		}
 	}
 
@@ -122,7 +125,7 @@ public class UserDAO implements DAO<User> {
 		
 		List<User> users = new ArrayList<>();
 
-		String query = "SELECT * FROM articles WHERE";
+		String query = "SELECT * FROM users WHERE";
 		for (String field : criteria.keySet()) {
 			query += " " + field + " = ? AND";
 		}
@@ -147,4 +150,5 @@ public class UserDAO implements DAO<User> {
 		return users;
 		
 	}
+
 }

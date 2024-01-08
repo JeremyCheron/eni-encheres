@@ -7,7 +7,6 @@ import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategoryManager;
 import fr.eni.encheres.bll.DateConversionUtil;
-import fr.eni.encheres.bll.ImageFileManager;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.ImageFile;
 import jakarta.servlet.RequestDispatcher;
@@ -61,16 +60,16 @@ public class CreateSaleServlet extends HttpServlet {
 		//System.out.println(photoPart.getContentType()); //.getBytes();
 		byte[] data = null; // TODO 
 		
-		try {
-			ArticleManager articleManager = ArticleManager.getInstance();
-			articleManager.createArticle(newArticle);
-			ImageFile newImage = new ImageFile(data, "img_"+newArticle.getName(), newArticle.getArticleId());
-			ImageFileManager imageFileManager = ImageFileManager.getInstance();
-			imageFileManager.createImageFile(newImage);
-			
-		} catch (BLLException e) {
-			// TODO: handle exception
-		}
+//		try {
+//			ArticleManager articleManager = ArticleManager.getInstance();
+//			articleManager.createArticle(newArticle);
+//			ImageFile newImage = new ImageFile(data, "img_"+newArticle.getName(), newArticle.getArticleId());
+//			ImageFileManager imageFileManager = ImageFileManager.getInstance();
+//			imageFileManager.createImageFile(newImage);
+//			
+//		} catch (BLLException e) {
+//			// TODO: handle exception
+//		}
 		
 		
 

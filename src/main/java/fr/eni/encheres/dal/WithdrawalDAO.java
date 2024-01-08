@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import fr.eni.encheres.bll.error.ErrorManager;
+import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.Withdrawal;
 import fr.eni.encheres.dal.helpers.DAOHelper;
 import fr.eni.encheres.dal.helpers.WithdrawalRowMapper;
@@ -16,6 +18,7 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 	
 	private Connection cnx;
 	private final DAOHelper<Withdrawal> daoHelper;
+	private ErrorManager errorManager;
 	
 	private static final String SELECT_BY_ID = "SELECT * FROM WITHDRAWALS WHERE article_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM WITHDRAWALS";
@@ -24,6 +27,7 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 	public WithdrawalDAO(Connection cnx) {
 		this.cnx = cnx;
 		this.daoHelper = new DAOHelper<>(new WithdrawalRowMapper());
+        this.errorManager = new ErrorManager();
 	}
 
 	@Override
@@ -63,20 +67,20 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 			int affectedRows = stmt.executeUpdate();
 			
 			if(affectedRows == 0) {
-				throw new DALException("Insertion Failed, no rows affected.");
+				throw new DALException(errorManager.getErrorMessage("10400"), "10400");
 			}
 			
 			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
 				if(generatedKeys.next()) {
 					withdrawal.setWithdrawalId(affectedRows);
 				} else {
-					throw new DALException("Insertion Failed, no ID obtained.");
+					throw new DALException(errorManager.getErrorMessage("10401"), "10401");
 				}
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Error during insertion.");
+			throw new DALException(errorManager.getErrorMessage("10402"), "10402");
 		}
 	}
 
@@ -88,7 +92,7 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DALException("Update Fail");
+			throw new DALException(errorManager.getErrorMessage("10403"), "10403");
 		}
 		
 	}
@@ -101,7 +105,7 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Error during deleting.");
+			throw new DALException(errorManager.getErrorMessage("10404"), "10404");
 		}
 		
 	}

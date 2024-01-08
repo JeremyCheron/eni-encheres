@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import fr.eni.encheres.bll.error.ErrorManager;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.dal.helpers.ArticleRowMapper;
 import fr.eni.encheres.dal.helpers.DAOHelper;
@@ -16,6 +17,7 @@ public class ArticleDAO implements DAO<Article>{
 	
 	private Connection cnx;
 	private final DAOHelper<Article> daoHelper;
+	private ErrorManager errorManager;
 	
 	private static final String SELECT_BY_ID = "SELECT * FROM ARTICLES WHERE article_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM ARTICLES";
@@ -23,6 +25,8 @@ public class ArticleDAO implements DAO<Article>{
 	public ArticleDAO(Connection _cnx) {
 		this.cnx = _cnx;
 		this.daoHelper = new DAOHelper<>(new ArticleRowMapper());
+        this.errorManager = new ErrorManager();
+
 	}
 	
 
@@ -62,20 +66,20 @@ public class ArticleDAO implements DAO<Article>{
 			int affectedRows = stmt.executeUpdate();
 			
 			if(affectedRows == 0) {
-				throw new DALException("Article : Insertion Failed, no rows affected.");
+				throw new DALException(errorManager.getErrorMessage("10100"), "10100");
 			}
 			
 			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
 				if(generatedKeys.next()) {
 					article.setArticleId(generatedKeys.getInt(1));
 				} else {
-					throw new DALException("Article : Insertion Failed, no ID obtained.");
+					throw new DALException(errorManager.getErrorMessage("10101"), "10101");
 				}
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Article : Error during insertion.");
+			throw new DALException(errorManager.getErrorMessage("10102"), "10102");
 		}
 	}
 	
@@ -88,7 +92,7 @@ public class ArticleDAO implements DAO<Article>{
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DALException("Article : Update Fail");
+			throw new DALException(errorManager.getErrorMessage("10103"), "10103");
 		}
 		
 	}
@@ -101,7 +105,7 @@ public class ArticleDAO implements DAO<Article>{
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Article : Error during deleting.");
+			throw new DALException(errorManager.getErrorMessage("10104"), "10104");
 		}
 	
 		
