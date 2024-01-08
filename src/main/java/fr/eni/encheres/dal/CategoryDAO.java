@@ -15,8 +15,8 @@ import fr.eni.encheres.dal.helpers.DAOHelper;
 
 public class CategoryDAO implements DAO<Category>{
 
-	private static final String SELECT_BY_ID = "SELECT * FROM ARTICLES WHERE category_id=?";
-	private static final String SELECT_ALL = "SELECT * FROM ARTICLES";
+	private static final String SELECT_BY_ID = "SELECT * FROM categories WHERE category_id=?";
+	private static final String SELECT_ALL = "SELECT * FROM categories";
 
 	private Connection cnx;
 	private final DAOHelper<Category> daoHelper;
@@ -45,36 +45,44 @@ public class CategoryDAO implements DAO<Category>{
 		List<Category> categories = new ArrayList<>();
 		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_ALL))
 		{
+			
 			ResultSet rs = stmt.executeQuery();
 			categories = daoHelper.mapResults(rs);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.err.println("failed to retrieve categories List");		
+			throw new DALException("failed to retrieve categories List");
 		}
 		return categories;
 	}
+//	@Override
+//	public void insert(Category category) throws DALException {
+//
+//		try (PreparedStatement stmt = daoHelper.createInsertStatement(category, cnx)) 
+//		{
+//			int affectedRows = stmt.executeUpdate();
+//			
+//			if(affectedRows == 0) {
+//				throw new DALException("Category : Insertion Failed, no rows affected.");
+//			}
+//			
+//			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+//				if(generatedKeys.next()) {
+//					category.setId(affectedRows);
+//				} else {
+//					throw new DALException("Category : Insertion Failed, no ID obtained.");
+//				}
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			throw new DALException("Category : Error during insertion.");
+//		}
+//	}
+	
 	@Override
 	public void insert(Category category) throws DALException {
-
-		try (PreparedStatement stmt = daoHelper.createInsertStatement(category, cnx)) 
-		{
-			int affectedRows = stmt.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new DALException("Category : Insertion Failed, no rows affected.");
-			}
-			
-			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-				if(generatedKeys.next()) {
-					category.setId(affectedRows);
-				} else {
-					throw new DALException("Category : Insertion Failed, no ID obtained.");
-				}
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DALException("Category : Error during insertion.");
-		}
+		
+		throw new DALException("You should not insert categories !"); 
 		
 	}
 

@@ -45,7 +45,7 @@ public class WithdrawalRowMapper implements RowMapper<Withdrawal>{
 		stmt.setString(1, withdrawal.getStreet());
 		stmt.setInt(2, withdrawal.getPostCode());
 		stmt.setString(3, withdrawal.getCity());
-		stmt.setInt(4, withdrawal.getId());
+		stmt.setInt(4, withdrawal.getWithdrawalId());
 		
 		return stmt;
 	}
@@ -57,7 +57,7 @@ public class WithdrawalRowMapper implements RowMapper<Withdrawal>{
 		
 		PreparedStatement stmt = cnx.prepareStatement(DELETE);
 		
-		stmt.setInt(1, withdrawal.getId());
+		stmt.setInt(1, withdrawal.getWithdrawalId());
 		
 		return stmt;
 	}

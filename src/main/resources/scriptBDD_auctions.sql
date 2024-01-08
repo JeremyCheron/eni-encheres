@@ -83,6 +83,19 @@ CREATE TABLE withdrawals (
  
 );
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'images'
+--
+CREATE TABLE images (
+  image_id INT IDENTITY(1,1) NOT NULL,
+  [data] VARBINARY(max) NOT NULL,
+  [filename] NVARCHAR(50) NOT NULL,
+  article_id INT NOT NULL,
+  CONSTRAINT images_image_id_pk PRIMARY KEY (image_id),
+ 
+);
 
 ------------------------------------------------------------------
 
@@ -98,4 +111,7 @@ ALTER TABLE bids ADD CONSTRAINT bids_article_fk FOREIGN KEY (article_id) REFEREN
 
 ALTER TABLE withdrawals ADD  CONSTRAINT withdrawals_article_fk FOREIGN KEY (article_id) REFERENCES articles (article_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 
-DROP TABLE bids
+ALTER TABLE images ADD CONSTRAINT images_article_fk FOREIGN KEY (article_id) REFERENCES articles (article_id) ON DELETE CASCADE ON UPDATE NO ACTION
+
+
+DROP TABLE images;

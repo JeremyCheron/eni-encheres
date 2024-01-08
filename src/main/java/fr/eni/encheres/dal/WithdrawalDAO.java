@@ -28,12 +28,12 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 	}
 
 	@Override
-	public Withdrawal selectByID(int id) throws DALException{
+	public Withdrawal selectByID(int withdrawalId) throws DALException{
 
 		Withdrawal withdrawal = null;
 		
 		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_ID)){
-			stmt.setInt(1, id);
+			stmt.setInt(1, withdrawalId);
 			ResultSet rs = stmt.executeQuery();
 			withdrawal = daoHelper.mapSingleResult(rs);
 				
@@ -69,7 +69,7 @@ public class WithdrawalDAO implements DAO<Withdrawal>{
 			
 			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
 				if(generatedKeys.next()) {
-					withdrawal.setId(affectedRows);
+					withdrawal.setWithdrawalId(affectedRows);
 				} else {
 					throw new DALException("Insertion Failed, no ID obtained.");
 				}
