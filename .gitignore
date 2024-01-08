@@ -3,3 +3,4 @@ context.xml
 /build/
 /.settings/
 /.classpath
+.project
