@@ -15,7 +15,7 @@ public class ErrorManager {
 	private void loadErrorsProperties() {
 
 		errorsProperties = new Properties();
-		try (InputStream input = getClass().getClassLoader().getResourceAsStream("fr.eni.encheres.bll.error.errors")) 
+		try (InputStream input = getClass().getClassLoader().getResourceAsStream("fr/eni/encheres/bll/error/errors.properties")) 
 		{
 			
 			if (input != null) {
