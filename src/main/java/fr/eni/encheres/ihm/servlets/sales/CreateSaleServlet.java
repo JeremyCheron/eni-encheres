@@ -2,7 +2,6 @@ package fr.eni.encheres.ihm.servlets.sales;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
 
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
@@ -17,7 +16,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 
 @WebServlet("/newSale")
 public class CreateSaleServlet extends HttpServlet {

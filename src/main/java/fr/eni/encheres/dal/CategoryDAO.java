@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.Category;
 import fr.eni.encheres.dal.helpers.CategoryRowMapper;
 import fr.eni.encheres.dal.helpers.DAOHelper;

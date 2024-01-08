@@ -2,36 +2,29 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.Objects" %>
 <%@ page import="java.util.Optional" %>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css">
-    <title>ENI Auctions - Log In</title>
-</head>
 
-<%@ include file="../assets/commons/header.jsp" %>
+<%@ include file="/assets/commons/header.jsp" %>
 
 <body>
 
-    <div class="flex items-center justify-center h-screen my-10">
-    
-		<% String loginError = Objects.toString(request.getAttribute("loginError"), ""); %>
+<% String loginError = Objects.toString(request.getAttribute("loginError"), ""); %>
 		<% if (!loginError.isEmpty()) { %>
-		    <div class="bg-red-500 text-white font-bold rounded-md p-4 mb-4">
+		<div class="flex items-center justify-center"> 
+		    <div class="bg-red-500 text-white font-bold rounded-md p-4 my-5 w-1/4 text-center">
 		        <%= loginError %>
+		        
 		    </div>
+		 </div>
 		<% } %>
+    <div class="flex items-center justify-center mt-12">
     
-        <div class="bg-green-700 text-white p-8 rounded shadow-md w-96">
+        <div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
         
-        <img alt="Logo JFA" src="${pageContext.request.contextPath}/assets/images/logoJFA.png">
+        <img alt="Logo JFA" src="${pageContext.request.contextPath}/assets/images/JFAsansFond.png">
         
-            <h1 class="text-2xl font-bold mb-6">Login</h1>
+            <h1 class="text-2xl font-bold">Login</h1>
 
-            <form ACTION="${pageContext.request.contextPath}/user/login" METHOD="post" class="">
+            <form ACTION="${pageContext.request.contextPath}/user/login" METHOD="post" class="max-h-96">
                 <label class="block text-gray-200 mb-2">Username:</label>
                 <input type="text" class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4" name="username" required>
 
