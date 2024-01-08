@@ -2,7 +2,7 @@ package fr.eni.encheres.bo;
 
 public class Category {
 
-	private int id;
+	private int categoryId;
 	private String name;
 		
 	public Category() {
@@ -10,16 +10,16 @@ public class Category {
 	}
 
 	public Category(int id, String name) {
-		this.id = id;
+		this.categoryId = id;
 		this.name = name;
 	}
 
-	public int getId() {
-		return id;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCategoryId(int id) {
+		this.categoryId = id;
 	}
 
 	public String getName() {

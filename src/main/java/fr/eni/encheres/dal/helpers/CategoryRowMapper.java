@@ -50,7 +50,7 @@ public class CategoryRowMapper implements RowMapper<Category> {
 		
 		PreparedStatement stmt = cnx.prepareStatement(DELETE);
 		
-		stmt.setInt(1, category.getId());
+		stmt.setInt(1, category.getCategoryId());
 		
 		return stmt;
 	}

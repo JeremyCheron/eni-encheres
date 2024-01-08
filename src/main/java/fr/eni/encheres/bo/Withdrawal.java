@@ -2,7 +2,7 @@ package fr.eni.encheres.bo;
 
 public class Withdrawal {
 
-	private int id;
+	private int withdrawalId;
 	private String street;
 	private int postCode;
 	private String city;
@@ -18,18 +18,18 @@ public class Withdrawal {
 	}
 
 	public Withdrawal(int id, String street, int postCode, String city) {
-		this.id = id;
+		this.withdrawalId = id;
 		this.street = street;
 		this.postCode = postCode;
 		this.city = city;
 	}
 
-	public int getId() {
-		return id;
+	public int getWithdrawalId() {
+		return withdrawalId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setWithdrawalId(int id) {
+		this.withdrawalId = id;
 	}
 
 	public String getStreet() {

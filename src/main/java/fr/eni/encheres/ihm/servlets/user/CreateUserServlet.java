@@ -6,11 +6,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.UserManager;
 import fr.eni.encheres.bo.User;
+import fr.eni.encheres.dal.DALException;
 
 /**
  * Servlet implementation class CreateUserServlet
@@ -47,6 +50,28 @@ public class CreateUserServlet extends HttpServlet {
 			userManager.createUser(newUser);
 		} catch (BLLException e) {
 			// TODO: handle exception
+		}
+		
+		try {
+			UserManager userManager = UserManager.getInstance();
+			userManager.createUser(newUser);
+			
+			if (userManager.login(username, password) != null) {
+			    HttpSession session = request.getSession();
+			    session.setAttribute("username", username);
+			    session.setAttribute("logged", true);
+
+			    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/testLogin.jsp");
+			    rd.forward(request, response);
+			} else {
+			    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			    request.setAttribute("loginError", "Invalid username or password. Please try again.");
+			    rd.forward(request, response);
+			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		} catch (DALException e) {
+			e.printStackTrace();
 		}
 		
 	}
