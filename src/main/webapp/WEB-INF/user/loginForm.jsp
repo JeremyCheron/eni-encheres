@@ -12,7 +12,7 @@
     <title>ENI Auctions - Log In</title>
 </head>
 
-<%@ include file="../assets/commons/header.jsp" %>
+<%@ include file="../../assets/commons/header.jsp" %>
 
 <body>
 
@@ -55,7 +55,7 @@
         </div>
     </div>
     
-<%@ include file="../assets/commons/footer.jsp" %>
+<%@ include file="../../assets/commons/footer.jsp" %>
 
 </body>
 </html>

@@ -1,17 +1,11 @@
 package fr.eni.encheres.dal.helpers;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.ImageFile;
 
 public class ImageFileRowMapper implements RowMapper<ImageFile>{

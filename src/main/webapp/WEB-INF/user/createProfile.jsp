@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENI Auctions - Create Account</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css">
+
     <script src="${pageContext.request.contextPath}/assets/js/confirmPassword.js"></script>
-</head>
-<body>
+
+
+<body class="items-center justify-center">
 
 <%@ include file="../../assets/commons/header.jsp" %>
 
 
-	<div class="container mx-auto flex items-center justify-center mt-10 mb-10">
-        <div class="bg-green-700 text-white p-8 rounded shadow-md w-full md:w-96 mb-10">
-                <img alt="Logo JFA" src="${pageContext.request.contextPath}/assets/images/logoJFA.png" class="mx-auto mb-6">
+	<div class="container mx-auto my-auto h-auto flex items-center justify-center p-24">
+        <div class="bg-gray-800 text-white p-8 rounded shadow-md w-full md:w-96">
+               <%--  <img alt="Logo JFA" src="${pageContext.request.contextPath}/assets/images/logoJFA.png" class="mx-auto mb-6"> --%>
         
-            <h1 class="text-2xl font-bold mb-6">Sign In</h1>
+            <h1 class="text-2xl font-bold">Sign In</h1>
 
 			<form action="${pageContext.request.contextPath}/user/create-account" id="registrationForm" method="post" onsubmit="return validatePassword()">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-3/4 " >

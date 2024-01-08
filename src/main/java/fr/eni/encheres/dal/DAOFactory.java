@@ -40,9 +40,9 @@ public class DAOFactory {
 		 return new WithdrawalDAO(cnx);
 	 }
 	 
-	 public DAO<ImageFile> getImageFileDAO() {
-		 return new ImageFileDAO(cnx);
-	 }
+//	 public DAO<ImageFile> getImageFileDAO() {
+//		 return new ImageFileDAO(cnx);
+//	 }
 	 
 	 
 }

@@ -7,16 +7,15 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import fr.eni.encheres.bo.Bid;
+import fr.eni.encheres.dal.BidDAO;
+import fr.eni.encheres.dal.ConnectionProvider;
+import fr.eni.encheres.dal.DALException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import fr.eni.encheres.bo.Bid;
-import fr.eni.encheres.dal.BidDAO;
-import fr.eni.encheres.dal.ConnectionProvider;
-import fr.eni.encheres.dal.DALException;
 
 @WebServlet("/test/bid-dao")
 public class BidDAOTestServlet extends HttpServlet {

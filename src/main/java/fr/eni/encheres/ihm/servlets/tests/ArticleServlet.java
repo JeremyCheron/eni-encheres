@@ -4,15 +4,14 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.time.LocalDate;
 
+import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.dal.ArticleDAO;
+import fr.eni.encheres.dal.ConnectionProvider;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import fr.eni.encheres.bo.Article;
-import fr.eni.encheres.dal.ArticleDAO;
-import fr.eni.encheres.dal.ConnectionProvider;
 
 @WebServlet("/ArticleServlet")
 public class ArticleServlet extends HttpServlet {
