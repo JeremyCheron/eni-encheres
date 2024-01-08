@@ -55,7 +55,7 @@
 							name="category" id="category">
 							<option value="default" selected>all</option>
 							<c:forEach var="current" items="${categories}">
-								<option value="${current.getId()}">${current.getName()}</option>
+								<option value="${current.getCategoryId()}">${current.getName()}</option>
 							</c:forEach>
 						</select>
 					</div>

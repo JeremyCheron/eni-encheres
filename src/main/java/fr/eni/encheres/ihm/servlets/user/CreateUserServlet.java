@@ -56,7 +56,7 @@ public class CreateUserServlet extends HttpServlet {
 			UserManager userManager = UserManager.getInstance();
 			userManager.createUser(newUser);
 			
-			if (userManager.login(username, password)) {
+			if (userManager.login(username, password) != null) {
 			    HttpSession session = request.getSession();
 			    session.setAttribute("username", username);
 			    session.setAttribute("logged", true);

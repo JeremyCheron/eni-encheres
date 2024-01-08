@@ -9,8 +9,9 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest; 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/user/mySales")
 public class MySalesListServlet extends HttpServlet {
@@ -19,11 +20,14 @@ public class MySalesListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			HttpSession session = request.getSession();
+			
 			CategoryManager categoryManager = CategoryManager.getInstance();
 			request.setAttribute("categories", categoryManager.getCategories());
 			
 			ArticleManager articleManager = ArticleManager.getInstance();
-			request.setAttribute("searchResults", articleManager.getUserArticles(5));
+			request.setAttribute("searchResults", articleManager.getUserArticles(Integer.valueOf(session.getAttribute("userId").toString())));
 			
 		} catch (BLLException e) {
 			System.err.println("failed retrieve of categories list ");

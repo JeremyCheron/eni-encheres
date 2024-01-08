@@ -38,10 +38,9 @@ public class UserManager {
 	        }
 	    }
 	
-	    public boolean login (String username, String password) throws BLLException, DALException {
+	    public User login (String username, String password) throws BLLException, DALException {
 	    	UserDAO loginDAO = (UserDAO) new DAOFactory().getUserDAO();
-	    	return loginDAO.validateLogin(username, password);
-	    	
+			return loginDAO.validateLogin(username, password);
 	    }
 	    
 	private void validateUserData(User user) throws BLLException {
