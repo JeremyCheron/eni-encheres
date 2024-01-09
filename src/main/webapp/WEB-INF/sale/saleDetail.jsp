@@ -82,13 +82,22 @@
 
 										<div class="flex mx-2 w-40">
 											<button type="submit"
-												class="w-full bg-green-500 hover:bg-green-700 text-grey-800 p-2 rounded">Bid</button>
+												class="animate-pulse transform motion-reduce:transform-none hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300 w-full bg-green-500 hover:bg-green-700 text-grey-800 p-2 rounded">Bid</button>
+
 										</div>
 									</div>
 								</div>
 							</div>
 					</div>
 				</form>
+			</div>
+
+			<div class="m-10">
+				<ul>
+					<c:forEach var="current" items="${searchResults}">
+						<li>${current.getName()}</li>
+					</c:forEach>
+				</ul>
 			</div>
 
 			<%@ include file="../../assets/commons/footer.jsp"%>
