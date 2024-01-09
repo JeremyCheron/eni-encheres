@@ -51,6 +51,7 @@
                 </div>
 
                 <div class="flex justify-between mt-6">
+                
                     <button type="submit" class="bg-green-500 text-white p-2 rounded">Sign In</button>
                     <button type="button" class="bg-red-500 text-white p-2 rounded" onclick="window.location.href='${pageContext.request.contextPath}'">Cancel</button>
                 </div>

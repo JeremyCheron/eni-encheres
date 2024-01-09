@@ -6,6 +6,7 @@ import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.UserManager;
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.DALException;
+import fr.eni.encheres.utils.Nav;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -45,9 +46,8 @@ public class Login extends HttpServlet {
 			    response.sendRedirect(request.getContextPath() + "/");
 
 			} else {
-			    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			    request.setAttribute("loginError", "Invalid username or password. Please try again.");
-			    rd.forward(request, response);
+				Nav.forwardToHome(request, response);
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();
