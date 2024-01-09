@@ -13,6 +13,7 @@ public class Article {
 	private int finalPrice;
 	private int userId;
 	private int categoryId;
+	private String sellerName;
 	
 	public Article() {
 		
@@ -117,6 +118,18 @@ public class Article {
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+
+
+	public String getSellerName() {
+		return sellerName;
+	}
+
+
+
+	public void setSellerName(String sellerName) {
+		this.sellerName = sellerName;
 	}
 
 	

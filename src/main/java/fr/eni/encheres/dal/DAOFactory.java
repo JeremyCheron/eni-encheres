@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.Category;
-import fr.eni.encheres.bo.ImageFile;
+//import fr.eni.encheres.bo.ImageFile;
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.bo.Withdrawal;
 

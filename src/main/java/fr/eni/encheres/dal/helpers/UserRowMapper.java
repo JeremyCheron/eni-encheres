@@ -52,7 +52,7 @@ public class UserRowMapper implements RowMapper<User> {
 	@Override
 	public PreparedStatement createUpdateStatement(User user, Connection cnx) throws SQLException {
 		
-		String UPDATE = "UPDATE dbo.USERS SET user_name=?, user_lastName=?, user_firstName=?, user_email=?, user_city=?, user_street=?, user_password=?, user_phone=? user_postCode=?, user_credit=?, user_isAdmin=?, WHERE user_id=?";
+		String UPDATE = "UPDATE USERS SET user_name=?, user_lastName=?, user_firstName=?, user_email=?, user_city=?, user_street=?, user_password=?, user_phone=? user_postCode=?, user_credit=?, user_isAdmin=?, WHERE user_id=?";
 		
 		PreparedStatement stmt = cnx.prepareStatement(UPDATE);
 	
@@ -74,7 +74,7 @@ public class UserRowMapper implements RowMapper<User> {
 	@Override
 	public PreparedStatement deleteStatement(User user, Connection cnx) throws SQLException {
 		
-		String DELETE = "DELETE FROM dbo.USERS WHERE user_id=?";
+		String DELETE = "DELETE FROM USERS WHERE user_id=?";
 		
 		PreparedStatement stmt = cnx.prepareStatement(DELETE);
 		

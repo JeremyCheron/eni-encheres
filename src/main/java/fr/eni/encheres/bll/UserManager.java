@@ -140,4 +140,19 @@ public class UserManager {
 		
 	}
 	
+	public User getUser(int id) throws BLLException {
+		User user = null;
+		
+		try {
+			
+			user = userDAO.selectByID(id);
+			
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
+	
 }

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import fr.eni.encheres.bll.error.ErrorManager;
-import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.Withdrawal;
 import fr.eni.encheres.dal.helpers.DAOHelper;
 import fr.eni.encheres.dal.helpers.WithdrawalRowMapper;

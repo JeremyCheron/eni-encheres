@@ -19,8 +19,8 @@ public class UserDAO implements DAO<User> {
 	private final DAOHelper<User> daoHelper;
 	private ErrorManager errorManager;
 
-	private static final String SELECT_BY_ID = "SELECT * FROM dbo.USERS WHERE user_id=?";
-	private static final String SELECT_ALL = "SELECT * FROM dbo.USERS";
+	private static final String SELECT_BY_ID = "SELECT * FROM USERS WHERE user_id=?";
+	private static final String SELECT_ALL = "SELECT * FROM USERS";
 	private static final String COMPARE_USER_PASS = "SELECT * FROM USERS WHERE username=? AND password=?";
 
 	public UserDAO(Connection _cnx) {

@@ -113,33 +113,35 @@ public class ArticleDAO implements DAO<Article>{
 	
 	@Override
 	public List<Article> selectByCriteria(Map<String, Object> criteria) throws DALException {
-		
-		List<Article> articles = new ArrayList<>();
+	    List<Article> articles = new ArrayList<>();
 
-		String query = "SELECT * FROM articles WHERE";
-		for (String field : criteria.keySet()) {
-			query += " " + field + " = ? AND";
-		}
-		query = query.substring(0, query.length() - 4);
-		
-		try(PreparedStatement stmt = cnx.prepareStatement(query)){
-			int parameterIndex = 1;
-			for (Object value : criteria.values()) {
-				stmt.setObject(parameterIndex++, value);
-			}
-			
-			try (ResultSet rs = stmt.executeQuery()) {
-				while (rs.next()) {
-					articles = daoHelper.mapResults(rs);
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return articles;
-		
+	    // Si la map de critères est vide, renvoyer tous les articles
+	    if (criteria == null || criteria.isEmpty()) {
+	        return selectAll();
+	    }
+
+	    String query = "SELECT * FROM articles WHERE";
+	    for (String field : criteria.keySet()) {
+	        query += " " + field + " LIKE ? AND";
+	    }
+	    query = query.substring(0, query.length() - 4);
+
+	    try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+	        int parameterIndex = 1;
+	        for (Object value : criteria.values()) {
+	            stmt.setObject(parameterIndex++, value);
+	        }
+
+	        try (ResultSet rs = stmt.executeQuery()) {
+	            while (rs.next()) {
+	                articles.add(daoHelper.mapSingleResult(rs));
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return articles;
 	}
 
 }

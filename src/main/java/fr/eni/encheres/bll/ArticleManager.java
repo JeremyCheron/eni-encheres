@@ -1,10 +1,12 @@
 package fr.eni.encheres.bll;
 
 import java.util.List;
+import java.util.Map;
 
 import fr.eni.encheres.bll.error.ErrorManager;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Bid;
+import fr.eni.encheres.bo.User;
 import fr.eni.encheres.dal.BidDAO;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
@@ -33,7 +35,7 @@ public class ArticleManager {
 	}
 
 	public void createArticle(Article article) throws BLLException {
-		validateArticleData(article);
+//		validateArticleData(article);
 
 		try {
 			articleDAO.insert(article);
@@ -100,6 +102,36 @@ public class ArticleManager {
 
 	private void validateArticleData(Article article) throws BLLException {
 		throw new BLLException(errorManager.getErrorMessage("20103"), "20103");
+	}
+
+	public List<Article> searchArticles(Map<String, Object> criteria) throws BLLException {
+        try {
+            return articleDAO.selectByCriteria(criteria);
+        } catch (DALException e) {
+    		throw new BLLException(errorManager.getErrorMessage("20104"), "20104");
+        }
+    }
+	
+	public String getArticleSellerName(Article article) throws BLLException {
+		String sellerName = "";
+		
+		try {
+			UserManager userManager = UserManager.getInstance();
+			User seller = userManager.getUser(article.getUserId());
+			
+			if(seller != null) {
+				sellerName = seller.getUsername();
+				System.out.println(sellerName);
+			} else {
+				System.out.println("null");
+
+				throw new BLLException(sellerName, sellerName);
+			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
+		
+		return sellerName;
 	}
 
 }
