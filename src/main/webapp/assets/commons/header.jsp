@@ -15,40 +15,38 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<div
 		class="bg-gray-800 text-white flex items-center w-full justify-between">
-		<div>
-			<div class="flex items-center h-full">
-				<a href="${pageContext.request.contextPath}"> <img class="size-16 ml-10"
-					src="${pageContext.request.contextPath}/assets/images/JFAsansFond.png" />
-					<div class="ml-6">
-						<h1 class="text-2xl font-bold ">ENI Auctions</h1>
-				</a>
-			</div>
+		<div class="flex items-center h-full w-2/4">
+			<a class="flex items-center"
+				href="${pageContext.request.contextPath}"> <img
+				class="size-16 ml-10"
+				src="${pageContext.request.contextPath}/assets/images/JFAsansFond.png" />
+				<span class="text-2xl font-bold ml-6">ENI Auctions</span>
+			</a>
 		</div>
-	</div>
-	<div class="text-sm justify-center mr-10">
-		<c:set var="username" value="${sessionScope.username}" />
-		<c:choose>
-			<c:when test="${!empty username}">
-				<a class="m-5 hover:text-cyan-400"
-					href="${pageContext.request.contextPath}/Home">Auctions</a>
-				<a class="m-5 hover:text-cyan-400"
-					href="${pageContext.request.contextPath}/newSale">New Sale </a>
-				<a class="m-5 hover:text-cyan-400"
-					href="${pageContext.request.contextPath}/user/mySales">My
-					Profile</a>
-				<a class="m-5 hover:text-cyan-400"
-					href="${pageContext.request.contextPath}/user/logout">Disconnect</a>
+		<div class="text-sm justify-center mr-10">
+			<c:set var="username" value="${sessionScope.username}" />
+			<c:choose>
+				<c:when test="${!empty username}">
+					<a class="m-5 hover:text-cyan-400"
+						href="${pageContext.request.contextPath}/Home">Auctions</a>
+					<a class="m-5 hover:text-cyan-400"
+						href="${pageContext.request.contextPath}/newSale">New Sale </a>
+					<a class="m-5 hover:text-cyan-400"
+						href="${pageContext.request.contextPath}/user/mySales">My
+						Profile</a>
+					<a class="m-5 hover:text-cyan-400"
+						href="${pageContext.request.contextPath}/user/logout">Disconnect</a>
 
-			</c:when>
-			<c:otherwise>
-				<a class="m-5 hover:text-cyan-400"
-					href="${pageContext.request.contextPath}/user/login">Login</a>
-				<a class="m-5 hover:text-cyan-400"
-					href="${pageContext.request.contextPath}/user/create-account">Sign
-					in</a>
-			</c:otherwise>
-		</c:choose>
-	</div>
+				</c:when>
+				<c:otherwise>
+					<a class="m-5 hover:text-cyan-400"
+						href="${pageContext.request.contextPath}/user/login">Login</a>
+					<a class="m-5 hover:text-cyan-400"
+						href="${pageContext.request.contextPath}/user/create-account">Sign
+						in</a>
+				</c:otherwise>
+			</c:choose>
+		</div>
 
 	</div>
 </header>
