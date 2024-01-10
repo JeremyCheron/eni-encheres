@@ -12,10 +12,6 @@
 
 	<%@ include file="../../assets/commons/header.jsp"%>
 
-	<div>
-		<h1 class="text-center align-middle my-10">My sales</h1>
-	</div>
-
 	<div class="flex">
 		<form action="${pageContext.request.contextPath}/sales/list"
 			method="GET">

@@ -2,6 +2,7 @@ package fr.eni.encheres.ihm.servlets.user;
 
 import java.io.IOException;
 
+import fr.eni.encheres.utils.Nav;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -16,7 +17,7 @@ public class Logout extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		Nav.loginIfCookieFound(request);
         HttpSession session = request.getSession(false);
         
         if (session != null) {

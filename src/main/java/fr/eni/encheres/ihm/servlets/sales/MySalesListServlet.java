@@ -5,6 +5,7 @@ import java.io.IOException;
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategoryManager;
+import fr.eni.encheres.utils.Nav;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ public class MySalesListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			
+			Nav.loginIfCookieFound(request);
 			HttpSession session = request.getSession();
 			
 			CategoryManager categoryManager = CategoryManager.getInstance();

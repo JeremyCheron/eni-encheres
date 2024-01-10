@@ -24,7 +24,7 @@ public class DetailSaleServlet extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		Nav.loginIfCookieFound(request);
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("logged") != null) {

@@ -140,10 +140,7 @@ public class ArticleManager {
 			
 			if(seller != null) {
 				sellerName = seller.getUsername();
-				System.out.println(sellerName);
 			} else {
-				System.out.println("null");
-
 				throw new BLLException(sellerName, sellerName);
 			}
 		} catch (BLLException e) {

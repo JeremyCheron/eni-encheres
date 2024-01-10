@@ -54,6 +54,11 @@ public class UserManager {
 		return loginDAO.validateLogin(username, password);
     }
     
+    public User loginByCookie(String username) {
+		UserDAO loginDAO = (UserDAO) new DAOFactory().getUserDAO();
+		return loginDAO.getLogin(username);
+	}
+    
 	private void validateUserData(User user) throws BLLException {
 
 		if (isUsernameAlreadyTaken(user.getUsername())) {

@@ -11,6 +11,7 @@ import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.bo.Withdrawal;
 import fr.eni.encheres.utils.DateConversionUtil;
+import fr.eni.encheres.utils.Nav;
 //import fr.eni.encheres.bo.ImageFile;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -26,6 +27,7 @@ public class CreateSaleServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Nav.loginIfCookieFound(request);
 		
 		try {
 			CategoryManager categoryManager = CategoryManager.getInstance();

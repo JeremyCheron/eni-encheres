@@ -2,10 +2,14 @@ package fr.eni.encheres.utils;
 
 import java.io.IOException;
 
+import fr.eni.encheres.bll.UserManager;
+import fr.eni.encheres.bo.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public abstract class Nav {
 	
@@ -19,5 +23,23 @@ public abstract class Nav {
         rd.forward(request, response);
     }
 	
-	
+	public static void loginIfCookieFound(HttpServletRequest request) {
+		UserManager userManager = UserManager.getInstance();
+
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if ("rememberMeCookie".equals(cookie.getName())) {
+					String username = cookie.getValue();
+					User loggedUser = userManager.loginByCookie(username);
+					if (loggedUser != null) {
+						HttpSession session = request.getSession();
+						session.setAttribute("userId", loggedUser.getUserId());
+						session.setAttribute("username", username);
+						session.setAttribute("logged", true);
+					}
+				}
+			}
+		}
+	}
 }

@@ -22,6 +22,7 @@ public class UserDAO implements DAO<User> {
 	private static final String SELECT_BY_ID = "SELECT * FROM USERS WHERE user_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM USERS";
 	private static final String COMPARE_USER_PASS = "SELECT * FROM USERS WHERE username=? AND password=?";
+	private static final String SELECT_BY_NAME = "SELECT * FROM USERS WHERE username=?";
 
 	public UserDAO(Connection _cnx) {
 		this.cnx = _cnx;
@@ -119,6 +120,21 @@ public class UserDAO implements DAO<User> {
 		}
 		return null;
 	}
+	
+	public User getLogin(String username) {
+		User user = null;
+		try (PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_NAME)) {
+			stmt.setString(1, username);
+			ResultSet rs = stmt.executeQuery();
+			user = daoHelper.mapSingleResult(rs);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return user;
+	}
+
 	
 	@Override
 	public List<User> selectByCriteria(Map<String, Object> criteria) throws DALException {

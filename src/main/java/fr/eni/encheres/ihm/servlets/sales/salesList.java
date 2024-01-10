@@ -10,6 +10,7 @@ import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategoryManager;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.dal.DALException;
+import fr.eni.encheres.utils.Nav;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,7 +24,7 @@ public class salesList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Nav.loginIfCookieFound(request);
 		try {
 			
 			HttpSession session = request.getSession(false);

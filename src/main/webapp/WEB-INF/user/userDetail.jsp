@@ -71,7 +71,7 @@
 			<c:if test="${sessionScope.username eq searchedUser.username}">
     		
     		<div>
-                <button type="button" class="w-full bg-blue-500 text-white p-2 rounded" onclick="window.location.href='user/create-account'">Update Profile</button>
+               <a href="${pageContext.request.contextPath}/user/create-account"> <button type="button" class="w-full bg-blue-500 text-white p-2 rounded">Update Profile</button></a>
     		</div>
     	
     		</c:if>

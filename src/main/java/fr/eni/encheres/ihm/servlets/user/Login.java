@@ -25,19 +25,13 @@ public class Login extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Nav.loginIfCookieFound(request);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/loginForm.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String rememberMe = request.getParameter("remember");
 		
-		if(rememberMe!=null && rememberMe.equals("rememberMe")){
-			Cookie rememberMeCookie = new Cookie("rememberMeCookie","1");
-			rememberMeCookie.setHttpOnly(true);
-			rememberMeCookie.setMaxAge(60 * 60 * 24 * 365);
-			response.addCookie(rememberMeCookie);
-		}
 		
 		String username = request.getParameter("username");	
 		String password = request.getParameter("password");
@@ -52,6 +46,16 @@ public class Login extends HttpServlet {
 			    session.setAttribute("username", username);
 			    session.setAttribute("logged", true);
 
+			    String rememberMe = request.getParameter("remember");
+				
+				if(rememberMe!=null && rememberMe.equals("rememberMe")){
+					Cookie rememberMeCookie = new Cookie("rememberMeCookie",username);
+					rememberMeCookie.setHttpOnly(true);
+					rememberMeCookie.setMaxAge(60 * 60 * 24 * 365);
+					rememberMeCookie.setPath("/encheres");
+					response.addCookie(rememberMeCookie);
+				}
+			    
 			    response.sendRedirect(request.getContextPath() + "/");
 
 			} else {
