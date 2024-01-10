@@ -64,13 +64,14 @@ public class CreateSaleServlet extends HttpServlet {
 //		byte[] data = null; // TODO 
 		
 		      String newAdress = request.getParameter("defaultAddress");
+		      Withdrawal withdrawal = null;
 		      
-		      if (newAdress.equals("newAdress")) {
+		      if (newAdress != null && newAdress.equals("newAdress")) {
 		    	  String street = request.getParameter("street");
 		    	  int postalCode = Integer.parseInt(request.getParameter("postalCode"));
 		    	  String city = request.getParameter("city");
 		    	  
-		    	  Withdrawal withdrawal = new Withdrawal(street, postalCode, city);
+		    	  withdrawal = new Withdrawal(street, postalCode, city);
 		      
 		      } else {
 		    	
@@ -81,7 +82,7 @@ public class CreateSaleServlet extends HttpServlet {
 					int postalCode = user.getPostCode();
 					String city = user.getCity();
 					
-					Withdrawal withdrawal = new Withdrawal(street, postalCode, city);
+					withdrawal = new Withdrawal(street, postalCode, city);
 					
 				} catch (BLLException e) {
 					e.printStackTrace();
@@ -91,7 +92,7 @@ public class CreateSaleServlet extends HttpServlet {
 		
 		try {
 			ArticleManager articleManager = ArticleManager.getInstance();
-			articleManager.createArticle(newArticle);
+			articleManager.createArticle(newArticle, withdrawal);
 			
 			
 //			ImageFile newImage = new ImageFile(data, "img_"+newArticle.getName(), newArticle.getArticleId());

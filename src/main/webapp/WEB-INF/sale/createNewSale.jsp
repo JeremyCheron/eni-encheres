@@ -81,7 +81,7 @@
 				<div>
 					<label for="defaultAddress" class="flex-initial">Use an
 						other adress than mine</label> <input type="checkbox"
-						name="defaultAddress" id="defaultAddress"
+						name="defaultAddress" id="defaultAddress" value="newAdress"
 						onchange="toggleInputs()">
 				</div>
 				<div id="withdrawal">

@@ -7,10 +7,12 @@ import fr.eni.encheres.bll.error.ErrorManager;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.User;
+import fr.eni.encheres.bo.Withdrawal;
 import fr.eni.encheres.dal.BidDAO;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
 import fr.eni.encheres.dal.DAOFactory;
+import fr.eni.encheres.dal.WithdrawalDAO;
 
 public class ArticleManager {
 
@@ -34,11 +36,16 @@ public class ArticleManager {
 		this.articleDAO = articleDAO;
 	}
 
-	public void createArticle(Article article) throws BLLException {
+	public void createArticle(Article article, Withdrawal withdrawal) throws BLLException {
 //		validateArticleData(article);
 
 		try {
 			articleDAO.insert(article);
+			withdrawal.setWithdrawalId(article.getArticleId());
+			WithdrawalDAO withdrawalDAO = (WithdrawalDAO) new DAOFactory().getWithdrawalDAO();
+			withdrawalDAO.insert(withdrawal);
+			
+			
 		} catch (DALException e) {
 			throw new BLLException(errorManager.getErrorMessage("20102"), "20102");
 		}

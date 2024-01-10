@@ -24,13 +24,14 @@ public class WithdrawalRowMapper implements RowMapper<Withdrawal>{
 	@Override
 	public PreparedStatement createInsertStatement(Withdrawal withdrawal, Connection cnx) throws SQLException {
 
-		String INSERT = "INSERT INTO WITHDRAWALS (street, postal_code, city) VALUES (?,?,?)";
+		String INSERT = "INSERT INTO WITHDRAWALS (article_id, street, postal_code, city) VALUES (?,?,?,?)";
 		
 		PreparedStatement stmt = cnx.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
 		
-		stmt.setString(1, withdrawal.getStreet());
-		stmt.setInt(2, withdrawal.getPostCode());
-		stmt.setString(3, withdrawal.getCity());
+		stmt.setInt(1, withdrawal.getWithdrawalId());
+		stmt.setString(2, withdrawal.getStreet());
+		stmt.setInt(3, withdrawal.getPostCode());
+		stmt.setString(4, withdrawal.getCity());
 		
 		return stmt;
 	}
