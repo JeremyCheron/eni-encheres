@@ -121,7 +121,7 @@
                 				<h1 class="text-2xl font-bold">${current.name}</h1>
                 				<p>Starting Price : ${current.startPrice}</p>
                 				<p>End Date : ${current.endDate}</p>
-                				<p>Seller : ${current.sellerName}</p>
+                				<p>Seller : <a href="${pageContext.request.contextPath}/user/detail?userId=${current.userId}">${current.sellerName}</a></p>
 				            </div>
 				        </div>
 
@@ -140,7 +140,7 @@
                 				<h1 class="text-2xl font-bold">${current.name}</h1>
                 				<p>Starting Price : ${current.startPrice}</p>
                 				<p>End Date : ${current.endDate}</p>
-                				<p>Seller : ${current.sellerName}</p>
+                				<p>Seller : <a href="${pageContext.request.contextPath}/user/detail?userId=${current.userId}">${current.sellerName}</a></p>
 				            </div>
 				        </div>
 

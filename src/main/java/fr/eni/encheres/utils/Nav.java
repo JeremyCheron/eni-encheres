@@ -14,4 +14,10 @@ public abstract class Nav {
         rd.forward(request, response);
     }
 	
+	public static void forwardToProfile(HttpServletRequest request, HttpServletResponse response, int userId) throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher("/user/detail?userId=" + userId);
+        rd.forward(request, response);
+    }
+	
+	
 }
