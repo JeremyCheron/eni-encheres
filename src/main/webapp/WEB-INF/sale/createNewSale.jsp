@@ -91,9 +91,11 @@
 							type="text" id="street" name="street" disabled>
 					</div>
 					<div>
+
 						<label for="postalCode">Postal Code*:</label> <input
 							class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
 							type="text" id="postalCode" name="postalCode" disabled>
+
 					</div>
 					<div>
 						<label for="city">City*:</label> <input
