@@ -22,6 +22,8 @@ public class Bid {
 		this.amount = amount;
 		this.soldArticle = soldArticle;
 		this.bider = bider;
+		this.bidDate = LocalDate.now();
+		this.bidTime = LocalTime.now();
 	}
 
 

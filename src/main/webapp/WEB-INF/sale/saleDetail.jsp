@@ -1,107 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENI Auctions - Sale detail</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/style.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/js/disabledElements.js">
-	
-</script>
-
-</head>
-
-
+<%@ include file="../../assets/commons/header.jsp" %>
 <body>
 
-
-	<%@ include file="../../assets/commons/header.jsp"%>
-
-	<form action="${pageContext.request.contextPath}/newSale" method="POST"
-		class="h-3/4 flex items-center justify-center mb-10 p-24">
-		<div
-			class="bg-gray-800 text-white p-8 rounded shadow-md w-3/10 mb-10 ">
-			<div>
-				<form class="bg-gray-800">
-					<div class="flex">
-						<form action="${pageContext.request.contextPath}/user/mySales"
-							method="GET">
-							<div class="m-10 flex items-center">
-								<div>
-									<div>
-										<label for="filter" class="block text-lg font-bold text-white">CONTAIN
-										</label>
-									</div>
-
-									<div class="m-4">
-										<label class="flex-initial" for="description">Description
-											:</label>
-									</div>
-
-									<div class="m-4">
-										<label class="flex-initial" for="category">Category :</label>
-									</div>
-
-									<div class="m-4">
-										<label class="flex-initial" for="Best offer">Best
-											offer :</label>
-									</div>
-
-									<div class="m-4">
-										<label class="flex-initial" for="Bounty">Bounty :</label>
-									</div>
-
-
-									<div class="m-4">
-										<label class="flex-initial" for="End of auction">End
-											of auction :</label>
-									</div>
-
-									<div class="m-4">
-										<label class="flex-initial" for="Withdrawal">Withdrawal
-											:</label>
-									</div>
-
-									<div class="m-4">
-										<label class="flex-initial" for="Seller">Seller :</label>
-									</div>
-
-									<div class="m-4 flex items-center justify-center">
-										<label for="My proposal">My proposal :</label> <input
-											class="text-black text-right w-16 mx-2 border-gray-500"
-											id="ticketNum" type="number" name="ticketNum" value="0" />
-
-										<div class="flex mx-2 w-40">
-											<button type="submit"
-												class="animate-pulse transform motion-reduce:transform-none hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300 w-full bg-green-500 hover:bg-green-700 text-grey-800 p-2 rounded">Bid</button>
-
-										</div>
-									</div>
-								</div>
-							</div>
+<div class="flex items-center justify-center mt-12">
+    <c:choose>
+		<c:when test="${empty searchedArticle}">
+	    		<div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
+	    			<h1 class="text-2xl font-bold text-center">Article not found</h1>
+	    		</div>
+	   	</c:when>
+	   	<c:otherwise>
+	
+			<div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
+		
+					<h1 class="text-2xl font-bold text-center mb-3">Sale Detail</h1>
+					
+					<div class="flex jutify-center mb-3">
+					
+						<h2 class="text-center text-xl">${searchedArticle.name}</h2>
+						
 					</div>
-				</form>
+					
+					<div class="flex jutify-center">
+					
+						<label class="block text-gray-200 mb-2 w-48">Description :</label> 
+						<span class="text-center w-48">${searchedArticle.description}</span>
+						
+					</div>
+					
+					<div class="flex jutify-center">
+					
+						<label class="block text-gray-200 mb-2 w-48">Auction End Date :</label> 
+						<span class="text-center w-48">${searchedArticle.endDate}</span>
+						
+					</div>
+					
+					<div class="flex jutify-center">
+					
+						<label class="block text-gray-200 mb-2 w-48">Starting Price :</label> 
+						<span class="text-center w-48">${searchedArticle.startPrice}</span>
+						
+					</div>
+					
+					<div class="flex jutify-center">
+					
+						<label class="block text-gray-200 mb-2 w-48">Actual Best Bid :</label> 
+						<span class="text-center w-48">${searchedArticle.finalPrice}</span>
+						
+					</div>
+					
+					<div class="flex jutify-center">
+					
+						<label class="block text-gray-200 mb-2 w-48">Seller :</label> 
+						<span class="text-center w-48">${searchedArticle.sellerName}</span>
+						
+					</div>
+					
+					<div class="flex items-center justify-center flex-wrap mt-3 w-full pb-3 px-3">
+						<form action="${pageContext.request.contextPath}/sales/bid" method="post">
+							<fieldset class="border border-solid border-gray-300 flex flex-wrap items-center justify-center">
+								<legend>Want this Article ?</legend>
+								
+								<label class="block text-gray-200 w-30">Bid : </label> 
+								<input type="number" name="bidAmount" min="${searchedArticle.finalPrice}" placeholder="${searchedArticle.finalPrice}" class="text-right w-30 m-5 text-black"/>
+								<input type="hidden" name="articleId" value="${searchedArticle.articleId}" />
+								<input type="submit" class="w-80 bg-blue-500 text-white mb-3 mx-3 rounded"value="Bid Now"/>
+							</fieldset>
+						</form>
+						
+						
+					</div>
+		
 			</div>
+		</c:otherwise>
+	</c:choose>
+</div>
+		
 
-			<div class="m-10">
-				<ul>
-					<c:forEach var="current" items="${searchResults}">
-						<li>${current.getName()}</li>
-					</c:forEach>
-				</ul>
-			</div>
+<%@ include file="../../assets/commons/footer.jsp" %>
 
-			<%@ include file="../../assets/commons/footer.jsp"%>
 </body>
-
 
 </html>
