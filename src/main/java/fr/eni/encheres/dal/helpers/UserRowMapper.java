@@ -52,7 +52,7 @@ public class UserRowMapper implements RowMapper<User> {
 	@Override
 	public PreparedStatement createUpdateStatement(User user, Connection cnx) throws SQLException {
 		
-		String UPDATE = "UPDATE USERS SET user_name=?, user_lastName=?, user_firstName=?, user_email=?, user_city=?, user_street=?, user_password=?, user_phone=? user_postCode=?, user_credit=?, user_isAdmin=?, WHERE user_id=?";
+		String UPDATE = "UPDATE USERS SET username=?, last_Name=?, first_Name=?, email=?, city=?, street=?, password=?, phone=?, postal_code=?, credits=?, is_admin=? WHERE user_id=?";
 		
 		PreparedStatement stmt = cnx.prepareStatement(UPDATE);
 	

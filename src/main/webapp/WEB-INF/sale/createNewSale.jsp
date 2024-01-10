@@ -73,15 +73,14 @@
 					<input
 						class="w-full p-2 border border-gray-500 text-gray-800 rounded mb-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
 						type="date" name="endDate" id="endDate"
-						min="<%=LocalDate.now().format(formatter)%>" max="" value="<%=LocalDate.now().format(formatter)%>" required
-					>
+						min="<%=LocalDate.now().format(formatter)%>" max="" value="<%=LocalDate.now().format(formatter)%>" required>
 				</div>
 
 				<fieldset class="border border-slate-600 rounded p-2">
 					<legend>Withdrawal</legend>
 					<div>
 						<label for="defaultAddress" class="flex-initial">Use an other adress than mine</label>
-						<input type="checkbox" name="defaultAddress" id="defaultAddress"
+						<input type="checkbox" value="newAdress" name="defaultAddress" id="defaultAddress"
 							onchange="toggleInputs()">
 					</div>
 					<div id="withdrawal">

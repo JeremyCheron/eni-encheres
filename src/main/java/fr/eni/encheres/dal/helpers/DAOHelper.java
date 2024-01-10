@@ -35,7 +35,7 @@ public class DAOHelper<T> {
 	}
 	
 	public PreparedStatement createUpdateStatement(T Object, Connection cnx) throws SQLException {
-		return rm.createInsertStatement(Object, cnx);
+		return rm.createUpdateStatement(Object, cnx);
 	}
 	
 	public PreparedStatement deleteStatement (T Object, Connection cnx) throws SQLException{
