@@ -46,7 +46,6 @@ public class Login extends HttpServlet {
 		
 		try {
 			User loggedUser = userManager.login(username, password);
-			System.out.println(loggedUser);
 			if ( loggedUser != null) {
 			    HttpSession session = request.getSession();
 			    session.setAttribute("userId", loggedUser.getUserId());

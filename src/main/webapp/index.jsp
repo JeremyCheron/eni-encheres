@@ -4,7 +4,6 @@
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/assets/js/disabledElements.js">
-	
 </script>
 
 
