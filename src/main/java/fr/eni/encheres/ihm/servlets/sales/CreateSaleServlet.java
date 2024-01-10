@@ -6,7 +6,10 @@ import java.time.LocalDate;
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategoryManager;
+import fr.eni.encheres.bll.UserManager;
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.bo.User;
+import fr.eni.encheres.bo.Withdrawal;
 import fr.eni.encheres.utils.DateConversionUtil;
 //import fr.eni.encheres.bo.ImageFile;
 import jakarta.servlet.RequestDispatcher;
@@ -60,9 +63,37 @@ public class CreateSaleServlet extends HttpServlet {
 		//System.out.println(photoPart.getContentType()); //.getBytes();
 //		byte[] data = null; // TODO 
 		
+		      String newAdress = request.getParameter("defaultAddress");
+		      
+		      if (newAdress.equals("newAdress")) {
+		    	  String street = request.getParameter("street");
+		    	  int postalCode = Integer.parseInt(request.getParameter("postalCode"));
+		    	  String city = request.getParameter("city");
+		    	  
+		    	  Withdrawal withdrawal = new Withdrawal(street, postalCode, city);
+		      
+		      } else {
+		    	
+		    	  UserManager userManager = UserManager.getInstance();
+		    	  try {
+					User user = userManager.getUser(userId);
+					String street = user.getStreet();
+					int postalCode = user.getPostCode();
+					String city = user.getCity();
+					
+					Withdrawal withdrawal = new Withdrawal(street, postalCode, city);
+					
+				} catch (BLLException e) {
+					e.printStackTrace();
+				}
+		    	  
+		      }
+		
 		try {
 			ArticleManager articleManager = ArticleManager.getInstance();
 			articleManager.createArticle(newArticle);
+			
+			
 //			ImageFile newImage = new ImageFile(data, "img_"+newArticle.getName(), newArticle.getArticleId());
 //			ImageFileManager imageFileManager = ImageFileManager.getInstance();
 //			imageFileManager.createImageFile(newImage);

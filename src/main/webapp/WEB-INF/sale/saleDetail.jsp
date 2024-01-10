@@ -31,12 +31,9 @@
 		<div
 			class="bg-gray-800 text-white p-8 rounded shadow-md w-3/10 mb-10 ">
 			<div>
-				<form class="bg-gray-800">
-					<div class="flex">
-						<form action="${pageContext.request.contextPath}/user/mySales"
-							method="GET">
-							<div class="m-10 flex items-center">
-								<div>
+				<div class="flex">
+					<div class="m-10 flex items-center">
+								
 									<div>
 										<label for="filter" class="block text-lg font-bold text-white">CONTAIN
 										</label>
@@ -52,8 +49,7 @@
 									</div>
 
 									<div class="m-4">
-										<label class="flex-initial" for="Best offer">Best
-											offer :</label>
+										<label class="flex-initial" for="Best offer">Best offer :</label>
 									</div>
 
 									<div class="m-4">
@@ -62,13 +58,11 @@
 
 
 									<div class="m-4">
-										<label class="flex-initial" for="End of auction">End
-											of auction :</label>
+										<label class="flex-initial" for="End of auction">End of auction :</label>
 									</div>
 
 									<div class="m-4">
-										<label class="flex-initial" for="Withdrawal">Withdrawal
-											:</label>
+										<label class="flex-initial" for="Withdrawal">Withdrawal :</label>
 									</div>
 
 									<div class="m-4">
@@ -85,7 +79,7 @@
 												class="animate-pulse transform motion-reduce:transform-none hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300 w-full bg-green-500 hover:bg-green-700 text-grey-800 p-2 rounded">Bid</button>
 
 										</div>
-									</div>
+									
 								</div>
 							</div>
 					</div>
