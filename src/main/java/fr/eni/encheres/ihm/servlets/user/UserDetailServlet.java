@@ -30,7 +30,7 @@ public class UserDetailServlet extends HttpServlet {
 			//Test de si il existe et n'est pas vide 
 			if(userIdParam != null && !userIdParam.isEmpty()) {
 			
-				int userId = Integer.parseInt(request.getParameter("userId"));
+				int userId = Integer.parseInt(userIdParam);
 				handleUserDetailRequest(request, response, userId);
 			
 			} else {

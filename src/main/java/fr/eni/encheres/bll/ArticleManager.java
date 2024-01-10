@@ -65,13 +65,15 @@ public class ArticleManager {
 		
 		try {
 			BidDAO bidDAO = (BidDAO) new DAOFactory().getBidDAO();
-			Bid currentHighestBid = bidDAO.getHighestBid(articleId);
+			Article article = this.getArticle(articleId);
+			int finalPrice = article.getFinalPrice();
+			//			Bid currentHighestBid = bidDAO.getHighestBid(articleId);
 			
 			//verif si nouvelle enchere > meilleur enchere
-			if (currentHighestBid == null || bidAmount > currentHighestBid.getAmount()) {
+			if (bidAmount > finalPrice) {
 				
 				//ajouter enchere
-				Bid newBid = new Bid(userId, articleId, bidAmount);
+				Bid newBid = new Bid(bidAmount, articleId, userId);
 				bidDAO.insert(newBid);
 				
 				// ajuster crédits de l'encherisseur actuel
@@ -79,14 +81,18 @@ public class ArticleManager {
 				int currentUserCredits = userManager.getUserCredits(userId);
 				userManager.adjustUserCredits(userId, currentUserCredits - bidAmount);
 				
+				//Ajuster le prix de l'article
+				article.setFinalPrice(bidAmount);
+				this.updateArticle(article);
+				
 				//si une enchere existait, ajuster crédits de l'ancien meilleur encherisseur
-				if (currentHighestBid != null) {
-					int previousBidderId = currentHighestBid.getBider();
-					int previousBidAmount = currentHighestBid.getAmount();
-					
-					int previousBidderCredits = userManager.getUserCredits(previousBidderId);
-					userManager.adjustUserCredits(previousBidderId, previousBidderCredits + previousBidAmount);
-				}
+//				if (currentHighestBid != null) {
+//					int previousBidderId = currentHighestBid.getBider();
+//					int previousBidAmount = currentHighestBid.getAmount();
+//					
+//					int previousBidderCredits = userManager.getUserCredits(previousBidderId);
+//					userManager.adjustUserCredits(previousBidderId, previousBidderCredits + previousBidAmount);
+//				}
 				
 			} else {
 				throw new BLLException(errorManager.getErrorMessage("20300"), "20300");
@@ -99,6 +105,10 @@ public class ArticleManager {
 		
 	}
 	
+
+	private void updateArticle(Article article) throws DALException {
+		articleDAO.update(article);
+	}
 
 	private void validateArticleData(Article article) throws BLLException {
 		throw new BLLException(errorManager.getErrorMessage("20103"), "20103");
@@ -132,6 +142,21 @@ public class ArticleManager {
 		}
 		
 		return sellerName;
+	}
+
+	public Article getArticle(int articleId) throws BLLException{
+
+		Article article = null;
+		
+		try {
+			
+			article = articleDAO.selectByID(articleId);
+			
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+		
+		return article;
 	}
 
 }

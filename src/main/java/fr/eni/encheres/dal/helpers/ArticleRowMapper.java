@@ -34,7 +34,7 @@ public class ArticleRowMapper implements RowMapper<Article> {
 		String INSERT = "INSERT INTO ARTICLES(article_name, description, start_auction_date, end_auction_date, initial_price, final_price, user_id, category_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement stmt = cnx.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
-		
+		System.out.println("POURQUOI ?!");
 		stmt.setString(1, article.getName());
 		stmt.setString(2, article.getDescription());
 		stmt.setDate(3, Date.valueOf(article.getStartDate()));
@@ -53,7 +53,7 @@ public class ArticleRowMapper implements RowMapper<Article> {
 		String UPDATE = "UPDATE ARTICLES SET article_name=?, description=?, start_auction_date=?, end_auction_date=?, initial_price=?, final_price=?, user_id=?, category_id=? WHERE article_id=?";
 		
 		PreparedStatement stmt = cnx.prepareStatement(UPDATE);
-		
+		System.out.println("update ou pas ?");
 		stmt.setString(1, article.getName());
 		stmt.setString(2, article.getDescription());
 		stmt.setDate(3, Date.valueOf(article.getStartDate()));
