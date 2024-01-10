@@ -21,6 +21,7 @@ public class ArticleDAO implements DAO<Article>{
 	
 	private static final String SELECT_BY_ID = "SELECT * FROM ARTICLES WHERE article_id=?";
 	private static final String SELECT_ALL = "SELECT * FROM ARTICLES";
+	private static final String SELECT_BY_CATEGORY = "SELECT * FROM ARTICLES WHERE category_id=?";
 	
 	public ArticleDAO(Connection _cnx) {
 		this.cnx = _cnx;
@@ -43,6 +44,20 @@ public class ArticleDAO implements DAO<Article>{
 			e.printStackTrace();
 		}
 		return article;
+	}
+	
+	public List<Article> selectByCategory(int categoryId) throws DALException {
+		List<Article> articles = new ArrayList<>();
+		try(PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_CATEGORY))
+		{
+			stmt.setInt(1, categoryId);
+			ResultSet rs = stmt.executeQuery();
+			articles = daoHelper.mapResults(rs);
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return articles;
 	}
 
 	@Override

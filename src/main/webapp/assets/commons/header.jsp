@@ -28,11 +28,14 @@
 			<c:choose>
 				<c:when test="${!empty username}">
 					<a class="m-5 hover:text-cyan-400"
-						href="${pageContext.request.contextPath}/Home">Auctions</a>
+						href="${pageContext.request.contextPath}">Auctions</a>
 					<a class="m-5 hover:text-cyan-400"
 						href="${pageContext.request.contextPath}/newSale">New Sale </a>
 					<a class="m-5 hover:text-cyan-400"
-						href="${pageContext.request.contextPath}/user/mySales">My
+					href="${pageContext.request.contextPath}/user/mySales">My
+					Sales</a>
+					<a class="m-5 hover:text-cyan-400"
+						href="${pageContext.request.contextPath}/user/detail?userId=${sessionScope.userId}">My
 						Profile</a>
 					<a class="m-5 hover:text-cyan-400"
 						href="${pageContext.request.contextPath}/user/logout">Disconnect</a>

@@ -29,10 +29,11 @@ public class DetailSaleServlet extends HttpServlet {
 		
 		if (session.getAttribute("logged") != null) {
 			String articleIdParam = request.getParameter("articleId");
-			
+			int userId = Integer.valueOf(session.getAttribute("userId").toString());
 			if (articleIdParam != null && !articleIdParam.isEmpty()) {
 				
 				int articleId = Integer.parseInt(articleIdParam);
+				request.setAttribute("myId", userId);
 				handleArticleDetailRequest(request, response, articleId);
 			} else {
 				Nav.forwardToHome(request, response);

@@ -8,10 +8,12 @@ import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Bid;
 import fr.eni.encheres.bo.User;
 import fr.eni.encheres.bo.Withdrawal;
+import fr.eni.encheres.dal.ArticleDAO;
 import fr.eni.encheres.dal.BidDAO;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
 import fr.eni.encheres.dal.DAOFactory;
+import fr.eni.encheres.dal.UserDAO;
 import fr.eni.encheres.dal.WithdrawalDAO;
 
 public class ArticleManager {
@@ -164,6 +166,11 @@ public class ArticleManager {
 		}
 		
 		return article;
+	}
+
+	public List<Article> getArticleByCategory(int categoryId) throws DALException {
+			ArticleDAO articleByCategoryDAO = (ArticleDAO) new DAOFactory().getArticleDAO();
+			return articleByCategoryDAO.selectByCategory(categoryId);
 	}
 
 }

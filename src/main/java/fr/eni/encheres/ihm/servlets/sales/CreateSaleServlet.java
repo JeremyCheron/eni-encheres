@@ -18,6 +18,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/newSale")
 public class CreateSaleServlet extends HttpServlet {
@@ -40,6 +41,8 @@ public class CreateSaleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
 
 		String name = request.getParameter("article");
 		String description = request.getParameter("champ_description");
@@ -53,7 +56,7 @@ public class CreateSaleServlet extends HttpServlet {
 		LocalDate endDate = DateConversionUtil.convertInputDateToLocalDate(endDateSTR);
 		int startPrice = Integer.parseInt(request.getParameter("price"));
 		int finalPrice = Integer.parseInt(request.getParameter("price"));
-		int userId = 6;
+		int userId = Integer.valueOf(session.getAttribute("userId").toString());
 		int categoryId = Integer.parseInt(request.getParameter("category"));
 
 		Article newArticle = new Article(name, description, startDate, endDate, startPrice, finalPrice, userId,
@@ -103,9 +106,10 @@ public class CreateSaleServlet extends HttpServlet {
 			// TODO: handle exception
 		}
 		
-		
+	    request.setAttribute("newSale", "Your sale has been created successfully");
 
-		RequestDispatcher validSale = request.getRequestDispatcher("/WEB-INF/sale/saleCreatedSuccesfully.jsp");
+
+		RequestDispatcher validSale = request.getRequestDispatcher("/sales/detail?articleId=" + newArticle.getArticleId());
 		validSale.forward(request, response);
 	}
 }

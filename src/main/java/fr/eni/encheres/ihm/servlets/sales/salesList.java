@@ -9,6 +9,7 @@ import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategoryManager;
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.dal.DALException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -32,6 +33,8 @@ public class salesList extends HttpServlet {
 			ArticleManager articleManager = ArticleManager.getInstance();
 			
 			String searchFilter = request.getParameter("filter");
+			String searchCategory = request.getParameter("category");
+
 			
 			Map<String, Object> searchCriteria = null;
 			List<Article> searchResults = null;
@@ -47,7 +50,22 @@ public class salesList extends HttpServlet {
 				}
 				request.setAttribute("searchResults", searchResults);
 
-			} else {
+			} else if (searchCategory != null && !searchCategory.trim().isEmpty()){
+				int categoryId = Integer.parseInt(searchCategory);
+				try {
+					searchResults = articleManager.getArticleByCategory(categoryId);
+				} catch (DALException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				for (Article article : searchResults) {
+					String sellerName = articleManager.getArticleSellerName(article);
+					article.setSellerName(sellerName);
+				}
+				request.setAttribute("searchResults", searchResults);
+			}
+			
+			else {
 				allSales = articleManager.getArticles();
 				for (Article article : allSales) {
 					String sellerName = articleManager.getArticleSellerName(article);
