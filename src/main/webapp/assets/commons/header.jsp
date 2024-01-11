@@ -13,9 +13,10 @@
 	<%@ page import="java.util.Objects"%>
 	<%@ page import="jakarta.servlet.http.HttpSession"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<c:set var="username" value="${sessionScope.username}" />
 	<div
 		class="bg-gray-800 text-white flex items-center w-full justify-between">
-		<div class="flex items-center h-full w-2/4">
+		<div class="flex items-center h-full">
 			<a class="flex items-center"
 				href="${pageContext.request.contextPath}"> <img
 				class="size-16 ml-10"
@@ -23,17 +24,25 @@
 				<span class="text-2xl font-bold ml-6">ENI Auctions</span>
 			</a>
 		</div>
+
+		<div>
+			<c:if test="${!empty username}">
+			<p> - Hi, ${username} ! -</p>
+			</c:if>
+		</div>
+	
 		<div class="text-sm justify-center mr-10">
-			<c:set var="username" value="${sessionScope.username}" />
+
 			<c:choose>
 				<c:when test="${!empty username}">
+
 					<a class="m-5 hover:text-cyan-400"
 						href="${pageContext.request.contextPath}">Auctions</a>
 					<a class="m-5 hover:text-cyan-400"
 						href="${pageContext.request.contextPath}/newSale">New Sale </a>
 					<a class="m-5 hover:text-cyan-400"
-					href="${pageContext.request.contextPath}/user/mySales">My
-					Sales</a>
+						href="${pageContext.request.contextPath}/user/mySales">My
+						Sales</a>
 					<a class="m-5 hover:text-cyan-400"
 						href="${pageContext.request.contextPath}/user/detail?userId=${sessionScope.userId}">My
 						Profile</a>
