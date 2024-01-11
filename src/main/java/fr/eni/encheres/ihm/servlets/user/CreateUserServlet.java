@@ -78,7 +78,7 @@ public class CreateUserServlet extends HttpServlet {
 			    session.setAttribute("username", username);
 			    session.setAttribute("logged", true);
 
-			    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/testLogin.jsp");
+			    RequestDispatcher rd = request.getRequestDispatcher("/");
 			    rd.forward(request, response);
 			} else {
 			    request.setAttribute("loginError", "Invalid username or password. Please try again.");

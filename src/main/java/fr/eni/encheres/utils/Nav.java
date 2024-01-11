@@ -25,6 +25,7 @@ public abstract class Nav {
 	
 	public static void loginIfCookieFound(HttpServletRequest request) {
 		UserManager userManager = UserManager.getInstance();
+		HttpSession session = request.getSession();
 
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
@@ -33,7 +34,7 @@ public abstract class Nav {
 					String username = cookie.getValue();
 					User loggedUser = userManager.loginByCookie(username);
 					if (loggedUser != null) {
-						HttpSession session = request.getSession();
+						session = request.getSession();
 						session.setAttribute("userId", loggedUser.getUserId());
 						session.setAttribute("username", username);
 						session.setAttribute("logged", true);
