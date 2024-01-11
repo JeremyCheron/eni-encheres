@@ -1,6 +1,7 @@
 package fr.eni.encheres.ihm.servlets.sales;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,7 @@ public class salesList extends HttpServlet {
 			    searchCriteria = new HashMap<>();
 				searchCriteria.put("article_name", "%" + searchFilter + "%");
 				searchResults = articleManager.searchArticles(searchCriteria);
+				
 				for (Article article : searchResults) {
 					String sellerName = articleManager.getArticleSellerName(article);
 					article.setSellerName(sellerName);
@@ -72,6 +74,7 @@ public class salesList extends HttpServlet {
 					String sellerName = articleManager.getArticleSellerName(article);
 					article.setSellerName(sellerName);
 				}
+				allSales = allSales.stream().filter(a -> a.getEndDate().isAfter(LocalDate.now())).toList();
 				request.setAttribute("allSales", allSales);
 
 			}

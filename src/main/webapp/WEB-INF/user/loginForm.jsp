@@ -18,7 +18,7 @@
 
 	<div class="flex items-center justify-center mt-12">
 
-		<div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
+		<div class="bg-gray-800 text-white p-8 rounded shadow-md w-96 mb-28">
 
 			<img alt="Logo JFA"
 				src="${pageContext.request.contextPath}/assets/images/JFAsansFond.png">

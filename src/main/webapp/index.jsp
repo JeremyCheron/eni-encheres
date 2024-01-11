@@ -61,6 +61,7 @@
 				            <div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
                 				<h1 class="text-2xl font-bold">${current.name}</h1>
                 				<p>Starting Price : ${current.startPrice}</p>
+								<p>Start Date : ${current.startDate}</p>
                 				<p>End Date : ${current.endDate}</p>
                 				<p>
                 				Seller :
@@ -91,6 +92,7 @@
 				            <div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
                 				<h1 class="text-2xl font-bold">${current.name}</h1>
                 				<p>Starting Price : ${current.startPrice}</p>
+                				<p>Start Date : ${current.startDate}</p>
                 				<p>End Date : ${current.endDate}</p>
                 				<p>
                 				Seller :

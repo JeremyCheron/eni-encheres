@@ -109,7 +109,7 @@
 		</form>
 	</div>
 
-<div class="m-10">
+<div class="mx-10 mb-40">
 <c:set var="username" value="${sessionScope.username}" />
     <ul>
         <c:choose>
