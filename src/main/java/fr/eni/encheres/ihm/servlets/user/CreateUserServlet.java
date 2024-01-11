@@ -26,8 +26,32 @@ public class CreateUserServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Nav.loginIfCookieFound(request);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/createProfile.jsp");
-		rd.forward(request, response);
+		
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("logged") != null) {
+			
+			User editUser = null;
+			int userId = Integer.valueOf(session.getAttribute("userId").toString());
+			UserManager userManager = UserManager.getInstance();
+			
+				try {
+					
+					editUser = userManager.getUser(userId);
+					
+				} catch (BLLException e) {
+					e.printStackTrace();
+				}
+				
+				request.setAttribute("editUser", editUser);
+				
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/createProfile.jsp");
+				rd.forward(request, response);
+			}
+		
+		
+	
 	}
 
 

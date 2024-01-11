@@ -88,7 +88,7 @@ public class salesList extends HttpServlet {
 			
 			
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/sale/salesList.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 			
 		} catch (BLLException e) {

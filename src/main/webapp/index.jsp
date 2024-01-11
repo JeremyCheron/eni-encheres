@@ -15,10 +15,10 @@
 		<h1 class="text-center align-middle my-10">My sales</h1>
 	</div>
 
-	<div class="flex">
+	<div class="flex w-full items-center">
 		<form action="${pageContext.request.contextPath}/sales/list"
 			method="GET">
-			<div class="m-10 flex items-center">
+			<div class="m-10 w-full flex justify-center align-middle items-center">
 				<div>
 					<div>
 						<label for="filter" class="block text-lg font-bold text-gray-900">Filters
@@ -45,61 +45,7 @@
 							</c:forEach>
 						</select>
 					</div>
-					<c:set var="username" value="${sessionScope.username}" />
-					<c:if test="${!empty username}">
-						<div class="flex">
-							<div>
-								<label class="flex-initial" for="buyingsButton">Buyings</label> <input
-									class="p-2 border border-gray-500 text-gray-800 rounded ml-5 mr-20"
-									name="radio" id="buyingsButton" type="radio"
-									value="buyingsButton" onchange="toggleBuyingsSales()">
-								<div class="ml-10 disabledGroup" id="buyingCheckboxes">
-									<div class="block">
-										<input type="checkbox" name="openedBids" id="openedBids"
-											disabled> <label class="flex-initial" for="openedBids">opened
-											bids</label>
-									</div>
-	
-									<div class="block">
-										<input type="checkbox" name="myCurrentBids" id="myCurrentBids"
-											disabled> <label class="flex-initial"
-											for="myCurrentBids">my current bids</label>
-									</div>
-	
-									<div class="block">
-										<input type="checkbox" name="myWonBids" id="myWonBids" disabled>
-										<label class="flex-initial" for="myWonBids">my won bids</label>
-									</div>
-								</div>
-	
-							</div>
-							<div id="salesButton" class="ml-10">
-								<label class="flex-initial" for="mySales">My sales</label> <input
-									class="p-2 border border-gray-500 text-gray-800 rounded ml-5"
-									name="radio" id="salesButton" type="radio" value="salesButton"
-									checked onchange="toggleBuyingsSales()">
-								<div class="ml-10 enableGroup" id="salesCheckboxes">
-									<div class="block">
-										<input type="checkbox" name="myCurrentSales"
-											id="myCurrentSales"> <label class="flex-initial"
-											for="myCurrentSales">my current sales</label>
-									</div>
-	
-									<div class="block">
-										<input type="checkbox" name="nonBeginnedSales"
-											id="nonBeginnedSales"> <label class="flex-initial"
-											for="nonBeginnedSales">non beginned sales</label>
-									</div>
-	
-									<div class="block">
-										<input type="checkbox" name="endedSales" id="endedSales">
-										<label class="flex-initial" for="endedSales">ended
-											sales</label>
-									</div>
-								</div>
-							</div>
-						</div>
-					</c:if>
+					
 				</div>
 				<div class="flex mx-40 w-60">
 					<button type="submit"

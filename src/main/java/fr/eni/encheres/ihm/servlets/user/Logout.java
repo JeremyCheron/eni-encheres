@@ -17,7 +17,6 @@ public class Logout extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Nav.loginIfCookieFound(request);
         HttpSession session = request.getSession(false);
         
         if (session != null) {
