@@ -13,7 +13,6 @@ import fr.eni.encheres.dal.BidDAO;
 import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.dal.DAO;
 import fr.eni.encheres.dal.DAOFactory;
-import fr.eni.encheres.dal.UserDAO;
 import fr.eni.encheres.dal.WithdrawalDAO;
 
 public class ArticleManager {
@@ -83,6 +82,8 @@ public class ArticleManager {
 				
 				//ajouter enchere
 				Bid newBid = new Bid(bidAmount, articleId, userId);
+				Bid currentHighestBid = bidDAO.getHighestBid(articleId);
+
 				bidDAO.insert(newBid);
 				
 				// ajuster crédits de l'encherisseur actuel
@@ -95,13 +96,13 @@ public class ArticleManager {
 				this.updateArticle(article);
 				
 				//si une enchere existait, ajuster crédits de l'ancien meilleur encherisseur
-//				if (currentHighestBid != null) {
-//					int previousBidderId = currentHighestBid.getBider();
-//					int previousBidAmount = currentHighestBid.getAmount();
-//					
-//					int previousBidderCredits = userManager.getUserCredits(previousBidderId);
-//					userManager.adjustUserCredits(previousBidderId, previousBidderCredits + previousBidAmount);
-//				}
+				if (currentHighestBid != null) {
+					int previousBidderId = currentHighestBid.getBider();
+					int previousBidAmount = currentHighestBid.getAmount();
+					
+					int previousBidderCredits = userManager.getUserCredits(previousBidderId);
+					userManager.adjustUserCredits(previousBidderId, previousBidderCredits + previousBidAmount);
+				}
 				
 			} else {
 				throw new BLLException(errorManager.getErrorMessage("20300"), "20300");

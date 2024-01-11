@@ -72,13 +72,6 @@ public class CreateUserServlet extends HttpServlet {
 		try {
 			UserManager userManager = UserManager.getInstance();
 			userManager.createUser(newUser);
-		} catch (BLLException e) {
-			// TODO: handle exception
-		}
-		
-		try {
-			UserManager userManager = UserManager.getInstance();
-			userManager.createUser(newUser);
 			
 			if (userManager.login(username, password) != null) {
 			    HttpSession session = request.getSession();
