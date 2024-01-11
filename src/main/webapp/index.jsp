@@ -62,7 +62,18 @@
                 				<h1 class="text-2xl font-bold">${current.name}</h1>
                 				<p>Starting Price : ${current.startPrice}</p>
                 				<p>End Date : ${current.endDate}</p>
-                				<p>Seller : <a class="hover:text-cyan-400" href="${pageContext.request.contextPath}/user/detail?userId=${current.userId}">${current.sellerName}</a></p>
+                				<p>
+                				Seller :
+                				<c:choose>
+                				<c:when test="${logged}">
+                					<a class="hover:text-cyan-400" href="${pageContext.request.contextPath}/user/detail?userId=${current.userId}">${current.sellerName}</a>
+								</c:when> 
+								<c:otherwise>
+                					${current.sellerName}
+               					</c:otherwise>
+                				</c:choose>
+                				</p>
+                				
 				            </div>
 				        </div>
 
@@ -81,7 +92,17 @@
                 				<h1 class="text-2xl font-bold">${current.name}</h1>
                 				<p>Starting Price : ${current.startPrice}</p>
                 				<p>End Date : ${current.endDate}</p>
-                				<p>Seller : <a class="hover:text-cyan-400" href="${pageContext.request.contextPath}/user/detail?userId=${current.userId}">${current.sellerName}</a></p>
+                				<p>
+                				Seller :
+                				<c:choose>
+                				<c:when test="${logged}">
+                					<a class="hover:text-cyan-400" href="${pageContext.request.contextPath}/user/detail?userId=${current.userId}">${current.sellerName}</a>
+								</c:when> 
+								<c:otherwise>
+                					${current.sellerName}
+               					</c:otherwise>
+                				</c:choose>
+                				</p>
 				            </div>
 				        </div>
 
