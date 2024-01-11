@@ -27,7 +27,7 @@ public class salesList extends HttpServlet {
 		Nav.loginIfCookieFound(request);
 		try {
 			
-			HttpSession session = request.getSession(false);
+			HttpSession session = request.getSession();
 			CategoryManager categoryManager = CategoryManager.getInstance();
 			request.setAttribute("categories", categoryManager.getCategories());
 			
@@ -75,10 +75,6 @@ public class salesList extends HttpServlet {
 				request.setAttribute("allSales", allSales);
 
 			}
-			
-			
-			
-			
 			
 			
 			if (session != null && session.getAttribute("username") != null) {

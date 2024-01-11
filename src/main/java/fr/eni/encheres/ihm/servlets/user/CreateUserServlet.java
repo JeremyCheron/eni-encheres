@@ -27,7 +27,7 @@ public class CreateUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Nav.loginIfCookieFound(request);
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		
 		if (session.getAttribute("logged") != null) {
 			
@@ -77,8 +77,9 @@ public class CreateUserServlet extends HttpServlet {
 			    HttpSession session = request.getSession();
 			    session.setAttribute("username", username);
 			    session.setAttribute("logged", true);
+			    session.setAttribute("userId", newUser.getUserId());
 
-			    RequestDispatcher rd = request.getRequestDispatcher("/");
+			    RequestDispatcher rd = request.getRequestDispatcher("/Home");
 			    rd.forward(request, response);
 			} else {
 			    request.setAttribute("loginError", "Invalid username or password. Please try again.");
