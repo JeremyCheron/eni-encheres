@@ -50,9 +50,7 @@ public class CreateSaleServlet extends HttpServlet {
 		String description = request.getParameter("champ_description");
 		String startDateSTR = request.getParameter("startDate");
 		String endDateSTR = request.getParameter("endDate");
-
-		System.out.println("name="+ name+ " description="+description);
-		System.out.println("StartDate="+ startDateSTR+ " endDate="+endDateSTR);
+		
 		
 		LocalDate startDate = DateConversionUtil.convertInputDateToLocalDate(startDateSTR);
 		LocalDate endDate = DateConversionUtil.convertInputDateToLocalDate(endDateSTR);
