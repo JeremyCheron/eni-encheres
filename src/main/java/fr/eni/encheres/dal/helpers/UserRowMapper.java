@@ -79,6 +79,6 @@ public class UserRowMapper implements RowMapper<User> {
 		PreparedStatement stmt = cnx.prepareStatement(DELETE);
 		
 		stmt.setInt(1, user.getUserId());
-		return null;
+		return stmt;
 	}
 }

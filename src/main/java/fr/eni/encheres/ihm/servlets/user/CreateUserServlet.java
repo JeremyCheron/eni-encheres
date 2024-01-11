@@ -45,11 +45,10 @@ public class CreateUserServlet extends HttpServlet {
 				
 				request.setAttribute("editUser", editUser);
 				
-			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/createProfile.jsp");
-				rd.forward(request, response);
-			}
+		}
 		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/user/createProfile.jsp");
+		rd.forward(request, response);
 		
 	
 	}

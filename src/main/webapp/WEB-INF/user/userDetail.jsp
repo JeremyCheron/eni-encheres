@@ -73,6 +73,10 @@
     		<div>
                <a href="${pageContext.request.contextPath}/user/create-account"> <button type="button" class="w-full bg-blue-500 text-white p-2 rounded">Update Profile</button></a>
     		</div>
+    		<div>
+				<h3 class="text-center text-2xl animate-pulse mt-5"> /!\ WARNING /!\ </h3>
+				<a href="${pageContext.request.contextPath}/user/delete-account"> <button type="button" class="w-full bg-red-500 text-white mt-5 p-2 rounded">DELETE ACCOUNT</button></a>
+    		</div>
     	
     		</c:if>
 

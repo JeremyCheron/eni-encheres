@@ -159,5 +159,16 @@ public class UserManager {
 		
 		return user;
 	}
+
+	public void removeUser(User deleteUser) throws BLLException {
+
+		try {
+			userDAO.delete(deleteUser);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
