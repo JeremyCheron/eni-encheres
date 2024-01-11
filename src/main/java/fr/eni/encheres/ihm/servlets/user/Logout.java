@@ -28,6 +28,7 @@ public class Logout extends HttpServlet {
                 if ("rememberMeCookie".equals(cookie.getName())) {
                 	
                     cookie.setMaxAge(0);
+                    cookie.setPath("/encheres");
 
                     response.addCookie(cookie);
 

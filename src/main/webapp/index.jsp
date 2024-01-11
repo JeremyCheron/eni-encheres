@@ -51,7 +51,7 @@
 		</form>
 	</div>
 
-<div class="m-10">
+<div class="mx-10 mb-40">
     <ul>
         <c:choose>
             <c:when test="${empty searchResults}">
