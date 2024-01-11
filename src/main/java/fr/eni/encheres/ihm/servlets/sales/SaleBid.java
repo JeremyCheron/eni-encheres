@@ -11,7 +11,6 @@ import java.io.IOException;
 
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
-import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.utils.Nav;
 
 @WebServlet("/sales/bid")
@@ -49,7 +48,6 @@ public class SaleBid extends HttpServlet {
 		try {
 			ArticleManager articleManager = ArticleManager.getInstance();
 			
-			Article article = articleManager.getArticle(articleId);
 			articleManager.placeBid(userId, articleId, bidAdmount);
 			
 			

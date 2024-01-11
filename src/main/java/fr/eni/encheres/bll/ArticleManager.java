@@ -120,9 +120,9 @@ public class ArticleManager {
 		articleDAO.update(article);
 	}
 
-	private void validateArticleData(Article article) throws BLLException {
-		throw new BLLException(errorManager.getErrorMessage("20103"), "20103");
-	}
+//	private void validateArticleData(Article article) throws BLLException {
+//		throw new BLLException(errorManager.getErrorMessage("20103"), "20103");
+//	}
 
 	public List<Article> searchArticles(Map<String, Object> criteria) throws BLLException {
         try {

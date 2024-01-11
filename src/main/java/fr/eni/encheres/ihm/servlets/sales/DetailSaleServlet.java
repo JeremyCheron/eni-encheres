@@ -12,9 +12,7 @@ import java.io.IOException;
 
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
-import fr.eni.encheres.bll.UserManager;
 import fr.eni.encheres.bo.Article;
-import fr.eni.encheres.bo.User;
 import fr.eni.encheres.utils.Nav;
 
 @WebServlet("/sales/detail")

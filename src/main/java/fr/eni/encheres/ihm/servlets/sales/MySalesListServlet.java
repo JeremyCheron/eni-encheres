@@ -1,15 +1,12 @@
 package fr.eni.encheres.ihm.servlets.sales;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategoryManager;
 import fr.eni.encheres.bo.Article;
-import fr.eni.encheres.dal.DALException;
 import fr.eni.encheres.utils.Nav;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
