@@ -29,7 +29,7 @@ public abstract class Nav {
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
-				if ("rememberMeCookie".equals(cookie.getName())) {
+				if ("rememberMeCookie".equals(cookie.getName()) && cookie.getMaxAge() != 0) {
 					String username = cookie.getValue();
 					User loggedUser = userManager.loginByCookie(username);
 					if (loggedUser != null) {
