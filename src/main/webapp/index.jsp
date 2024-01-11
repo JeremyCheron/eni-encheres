@@ -11,10 +11,6 @@
 
 	<%@ include file="../../assets/commons/header.jsp"%>
 
-	<div>
-		<h1 class="text-center align-middle my-10">My sales</h1>
-	</div>
-
 	<div class="flex w-full items-center">
 		<form action="${pageContext.request.contextPath}/sales/list"
 			method="GET">
@@ -39,7 +35,7 @@
 						<label class="flex-initial" for="category">Category :</label> <select
 							class="w-64 p-2 border border-gray-500 text-gray-800 rounded ml-5 my-5 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
 							name="category" id="category">
-							<option value="default" selected>all</option>
+							<option value="" selected>all</option>
 							<c:forEach var="current" items="${categories}">
 								<option value="${current.getCategoryId()}">${current.getName()}</option>
 							</c:forEach>
