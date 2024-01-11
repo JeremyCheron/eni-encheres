@@ -7,10 +7,10 @@
 	
 </script>
 
+	<%@ include file="../../assets/commons/header.jsp"%>
 
 <body>
 
-	<%@ include file="../../assets/commons/header.jsp"%>
 
 	<div>
 		<h1 class="text-center align-middle my-10">My sales</h1>
@@ -109,13 +109,51 @@
 		</form>
 	</div>
 
-	<div class="m-10">
-		<ul>
-		<c:forEach var="current" items="${searchResults}">
-			<li> ${current.getName()}</li>
-		</c:forEach>
-		</ul>
-	</div>
+<div class="m-10">
+<c:set var="username" value="${sessionScope.username}" />
+    <ul>
+        <c:choose>
+            <c:when test="${empty searchResults}">
+                <div class="flex flex-wrap justify-center">
+				    <c:forEach var="current" items="${userSales}" varStatus="loopStatus">
+				        <div class="flex items-center justify-center mt-12 mx-4">
+				            <div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
+                				<h1 class="text-2xl font-bold">${current.name}</h1>
+                				<p>Starting Price : ${current.startPrice}</p>
+                				<p>Start Date : ${current.startDate}</p>
+                				<p>End Date : ${current.endDate}</p>
+				            </div>
+				        </div>
+
+				        <!-- Ajouter une nouvelle ligne après chaque troisième article -->
+				        <c:if test="${loopStatus.index % 3 == 2}">
+				            <div class="w-full"></div>
+				        </c:if>
+    				</c:forEach>
+				</div>
+            </c:when>
+            <c:otherwise>
+                <div class="flex flex-wrap justify-center">
+				    <c:forEach var="current" items="${searchResults}" varStatus="loopStatus">
+				        <div class="flex items-center justify-center mt-12 mx-4">
+				            <div class="bg-gray-800 text-white p-8 rounded shadow-md w-96">
+                				<h1 class="text-2xl font-bold">${current.name}</h1>
+                				<p>Starting Price : ${current.startPrice}</p>
+                				<p>Start Date : ${current.startDate}</p>
+                				<p>End Date : ${current.endDate}</p>
+                				</div>
+				        </div>
+
+				        <!-- Ajouter une nouvelle ligne après chaque troisième article -->
+				        <c:if test="${loopStatus.index % 3 == 2}">
+				            <div class="w-full"></div>
+				        </c:if>
+    				</c:forEach>
+				</div>
+            </c:otherwise>
+        </c:choose>
+    </ul>
+</div>
 
 	<%@ include file="../../assets/commons/footer.jsp"%>
 
